@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "Моделирование раскладки контуров высечки для In-mould-этикеток.",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/domelaz/IML_CutLayout.git"
@@ -14,5 +13,10 @@
   "bugs": {
     "url": "https://github.com/domelaz/IML_CutLayout/issues"
   },
-  "homepage": "https://github.com/domelaz/IML_CutLayout"
+  "homepage": "https://github.com/domelaz/IML_CutLayout",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-exec": "^0.4.7",
+    "load-grunt-config": "^0.19.2"
+  }
 }
