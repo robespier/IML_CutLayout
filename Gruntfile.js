@@ -24,6 +24,11 @@ module.exports = function(grunt) {
       cepDstPath: "js",
       cepDstName: "scripts.js",
 
+      /**
+       * Static extenstion sources
+       */
+      extSrc: "src/extension/",
+
       pkg: grunt.file.readJSON("package.json"),
     }
   });
