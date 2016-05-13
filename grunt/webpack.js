@@ -26,6 +26,9 @@ module.exports = {
     entry: [
       path.join(__dirname, "..", "<%= cepSrc %>", "index.ts")
     ],
+    externals: [
+      { fs: "require('fs')" },
+    ],
     module: {
       loaders: [
         { test: /CSInterface\.js$/, loader: "exports?CSInterface=CSInterface" }
