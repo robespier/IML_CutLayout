@@ -17,6 +17,13 @@ module.exports = function(grunt) {
       ilstDstPath: "jsx",
       ilstDstName: "hostscript.jsx",
 
+      /**
+       * Browser-side sources and destination
+       */
+      cepSrc: "src/panel/",
+      cepDstPath: "js",
+      cepDstName: "scripts.js",
+
       pkg: grunt.file.readJSON("package.json"),
     }
   });

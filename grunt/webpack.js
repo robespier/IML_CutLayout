@@ -22,4 +22,14 @@ module.exports = {
       pathinfo: true,
     },
   },
+  adobecep: {
+    entry: [
+      path.join(__dirname, "..", "<%= cepSrc %>", "index.ts")
+    ],
+    output: {
+      path: path.join(__dirname, "..", "<%= dist %>", "<%= cepDstPath %>"),
+      filename: "<%= cepDstName %>",
+      pathinfo: true,
+    },
+  }
 };
