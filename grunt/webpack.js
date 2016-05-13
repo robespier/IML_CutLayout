@@ -23,6 +23,7 @@ module.exports = {
     },
   },
   adobecep: {
+    devtool: "inline-source-map",
     entry: [
       path.join(__dirname, "..", "<%= cepSrc %>", "index.ts")
     ],
