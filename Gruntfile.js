@@ -32,4 +32,6 @@ module.exports = function(grunt) {
       pkg: grunt.file.readJSON("package.json"),
     }
   });
+
+  grunt.registerTask("default", ["less", "webpack", "copy"]);
 };
