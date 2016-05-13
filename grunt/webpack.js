@@ -26,10 +26,20 @@ module.exports = {
     entry: [
       path.join(__dirname, "..", "<%= cepSrc %>", "index.ts")
     ],
+    module: {
+      loaders: [
+        { test: /CSInterface\.js$/, loader: "exports?CSInterface=CSInterface" }
+      ]
+    },
     output: {
       path: path.join(__dirname, "..", "<%= dist %>", "<%= cepDstPath %>"),
       filename: "<%= cepDstName %>",
       pathinfo: true,
+    },
+    resolve: {
+      root: [
+        path.resolve(__dirname, "..", "src/vendor")
+      ],
     },
   }
 };
