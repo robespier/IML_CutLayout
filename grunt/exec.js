@@ -31,7 +31,7 @@ if (process.env.GRUNT_HOSTS) {
       "-avz",
       "--exclude *.swp",
       `--port ${devHostPort}`,
-      "src/extension/", // @fixme head to dist
+      "<%= dist %>/",
       `${devHostIp}::<%= pkg.name %>`
     ];
     return command.join(" ");
