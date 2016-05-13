@@ -3,10 +3,14 @@
     "module": "commonjs",
     "target": "es3",
     "noImplicitAny": false,
+    "noLib": true,
     "sourceMap": false,
     "outDir": "build"
   },
   "files": [
+    "../../typings/adobe/lib.core.d.ts",
+    "../../typings/adobe/extended-cs3.d.ts",
+    "../../typings/adobe/illustrator-cs3.d.ts",
     "index.ts"
   ]
 }
