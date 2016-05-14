@@ -29,5 +29,8 @@
     "typescript": "^1.8.10",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "angular": "^1.5.5"
   }
 }
