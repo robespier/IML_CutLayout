@@ -11,6 +11,9 @@ module.exports = {
         { test: /\.tsx?$/, loader: "ts-loader" }
       ],
     },
+    resolve: {
+      extensions: ['', '.js', '.ts', '.tsx']
+    },
   },
   adobejsx: {
     entry: [
