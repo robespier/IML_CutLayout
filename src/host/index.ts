@@ -3,10 +3,10 @@ import * as cepHandlers from "./handlers"; // Coming soon!
 /**
  * Диспетчер команд CEP в Иллюстратор, великий и ужасный.
  *
- * @param {any} cmd
+ * @param {CEPCommand} cmd
  * @returns {string}
  */
-function marshal(cmd): string {
+function marshal(cmd: CEPCommand): string {
   const executor = cepHandlers[cmd.handler];
   return executor(cmd.data);
 }
