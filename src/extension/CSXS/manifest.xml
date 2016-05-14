@@ -29,7 +29,7 @@
         </Lifecycle>
         <UI>
           <Type>Panel</Type>
-          <Menu>IML-CutLayout</Menu>
+          <Menu>IML Cut Layout</Menu>
         </UI>
       </DispatchInfo>
     </Extension>
