@@ -26,4 +26,9 @@ const responseHandler = (result) => {
  * На той стороне маршал вытащит имя метода `docCloser` и выполнит его.
  * Результат исполнения `docCloser` отдастся тут responseHandler-у.
  */
-cs.evalScript(`marshal(${JSON.stringify(command)})`, responseHandler);
+const action = () => {
+  cs.evalScript(`marshal(${JSON.stringify(command)})`, responseHandler);
+};
+
+const trigger = document.getElementById("btn-go");
+trigger.addEventListener("click", action);
