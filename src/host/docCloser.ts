@@ -1,6 +1,7 @@
 export const docCloser = (): string => {
   if (app.documents.length > 0) {
     app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);
+    return JSON.stringify({ status: "killed" });
   }
-  return "killed";
+  return JSON.stringify({ status: "missed" });
 };

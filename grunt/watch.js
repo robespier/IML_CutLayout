@@ -23,6 +23,10 @@ module.exports = {
     files: "<%= cepSrc %>/**/*.ts",
     tasks: ["webpack:adobecep"],
   },
+  extension: {
+    files: "<%= extSrc %>/**/*.*",
+    tasks: ["copy:extension"],
+  },
   sync: {
     files: ["<%= dist %>/**/*.*"],
     tasks: syncTask,
