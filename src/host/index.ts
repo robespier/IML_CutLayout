@@ -1,4 +1,4 @@
-import * as cepHandlers from "./handlers"; // Coming soon!
+import * as cepHandlers from "./handlers";
 
 /**
  * Диспетчер команд CEP в Иллюстратор, великий и ужасный.
