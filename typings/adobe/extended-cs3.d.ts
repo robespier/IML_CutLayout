@@ -59,7 +59,7 @@ declare var $: {
    * Provides access to the Global object, which contains the JavaScript
    * global namespace.
    */
-  // @fixme global: Global;
+  global: any;
 
   /**
    * The path for include files for the current script.
@@ -111,7 +111,7 @@ declare var $: {
   /**
    * An array of objects containing information about the display screens
    * attached to your computer.
-   * 
+   *
    * * Each object has the properties `left`, `top`, `right`, and `bottom`,
    *   which contain the four corners of each screen in global coordinates.
    * * A property `primary` is `true` if that object describes the primary
@@ -213,7 +213,7 @@ declare var $: {
   /**
    * Writes the specified text to the JavaScript Console.
    *
-   * @param {any} text One or more strings to write, which are concatenated to 
+   * @param {any} text One or more strings to write, which are concatenated to
    * form a single string.
    */
   write(message?: any, ...optionalParams: any[]): void;

@@ -11,6 +11,7 @@
     "../../typings/adobe/lib.core.d.ts",
     "../../typings/adobe/extended-cs3.d.ts",
     "../../typings/adobe/illustrator-cs3.d.ts",
+    "../interfaces.d.ts",
     "index.ts"
   ]
 }
