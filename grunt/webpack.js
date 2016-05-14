@@ -12,9 +12,16 @@ module.exports = {
       ],
     },
     resolve: {
+      root: [
+        path.resolve(__dirname, "..", "src/vendor")
+      ],
       extensions: ['', '.js', '.ts', '.tsx']
     },
   },
+
+  /**
+   * TypeScript -> ES3 для Иллюстратора
+   */
   adobejsx: {
     entry: [
       path.join(__dirname, "..", "<%= ilstSrc %>", "index.ts")
@@ -24,7 +31,16 @@ module.exports = {
       filename: "<%= ilstDstName %>",
       pathinfo: true,
     },
+    plugins: [
+      new webpack.ProvidePlugin({
+        JSON: "json2",
+      }),
+    ],
   },
+
+  /**
+   * TypeScript -> ES5 для CEP
+   */
   adobecep: {
     devtool: "inline-source-map",
     entry: [
@@ -42,11 +58,6 @@ module.exports = {
       path: path.join(__dirname, "..", "<%= dist %>", "<%= cepDstPath %>"),
       filename: "<%= cepDstName %>",
       pathinfo: true,
-    },
-    resolve: {
-      root: [
-        path.resolve(__dirname, "..", "src/vendor")
-      ],
     },
   }
 };
