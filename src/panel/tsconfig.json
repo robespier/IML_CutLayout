@@ -9,6 +9,7 @@
   "files": [
     "../../typings/node/node.d.ts",
     "../../typings/adobe/csInterface.d.ts",
+    "../../typings/angularjs/angular.d.ts",
     "../interfaces.d.ts",
     "index.ts"
   ]
