@@ -1,34 +1,18 @@
-import { CSInterface } from "CSInterface";
+import "angular";
 
-const cs = new CSInterface();
+const app = angular.module("iml", []);
 
-/**
- * Собираемся выполнить на стороне ILST метод `docCloser`, без параметров.
- */
-const command: CEPCommand = {
-  handler: "docCloser",
-};
+const ctrlMain = ($scope) => {
+  /**
+   * Собираемся выполнить на стороне ILST метод `docCloser`, без параметров.
+   */
+  const command: CEPCommand = {
+    handler: "docCloser",
+  };
 
-/**
- * Обработчик ответа от ILST
- */
-const responseHandler = (result) => {
-  try {
-    JSON.parse(result);
-  } catch (err) {
-    console.error(result, err);
+  $scope.go = () => {
+    console.log("GO yourself, you, motherfucker");
   }
-};
+}
 
-/**
- * Передаём команду в функцию `marshal` из контекста ILST.
- *
- * На той стороне маршал вытащит имя метода `docCloser` и выполнит его.
- * Результат исполнения `docCloser` отдастся тут responseHandler-у.
- */
-const action = () => {
-  cs.evalScript(`marshal(${JSON.stringify(command)})`, responseHandler);
-};
-
-const trigger = document.getElementById("btn-go");
-trigger.addEventListener("click", action);
+app.controller("ctrlMain", ["$scope", ctrlMain]);

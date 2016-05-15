@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="iml">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-    <button id="btn-go">GO</button>
+    <div ng-controller="ctrlMain">
+      <button ng-click="go()">GO</button>
+    </div>
     <script src="js/scripts.js"></script>
   </body>
 </html>
