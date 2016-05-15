@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="iml">
+<html ng-app="CutLayout">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,18 @@
   </head>
   <body>
     <div ng-controller="ctrlMain">
-      <button ng-click="go()">GO</button>
+        <div ng-include="section['label_type']" class="section"></div>
+        <div ng-include="section['trim_offset']" class="section"></div>
+        <div ng-include="section['material_name']" class="section"></div>
+        <div ng-include="section['material_width']" class="section"></div>
+        <div ng-include="section['non-working_area']" class="section"></div>
+        <div ng-include="section['printing_machine']" class="section"></div>
+        <div ng-include="section['forme_roller']" class="section"></div>
+        <div ng-include="section['layout_type']" class="section"></div>
+        <div ng-include="section['advanced_options']" class="section"></div>
+        <div ng-include="section['printing']" class="section"></div>
+        <div ng-include="section['action']" class="section"></div>
+        <div ng-include="section['report_summary'] class="section""></div>
     </div>
     <script src="js/scripts.js"></script>
   </body>
