@@ -10,6 +10,9 @@
     "../../typings/node/node.d.ts",
     "../../typings/adobe/csInterface.d.ts",
     "../interfaces.d.ts",
+    "../../typings/angularjs/angular.d.ts",
+    "../../typings/angularjs/angular-route.d.ts",
     "index.ts"
+    "app.ts"
   ]
 }
