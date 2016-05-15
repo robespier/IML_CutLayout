@@ -2,7 +2,13 @@ import "angular";
 
 const app = angular.module("iml", []);
 
-const ctrlMain = ($scope) => {
+/**
+ * После того, как модуль создан, можно заявлять "наши" сервисы.
+ * В иной последовательности будет зихер.
+ */
+import "./serviceILST";
+
+const ctrlMain = ($scope, ILST) => {
   /**
    * Собираемся выполнить на стороне ILST метод `docCloser`, без параметров.
    */
@@ -11,8 +17,11 @@ const ctrlMain = ($scope) => {
   };
 
   $scope.go = () => {
-    console.log("GO yourself, you, motherfucker");
+    ILST.execute(command);
   }
 }
 
-app.controller("ctrlMain", ["$scope", ctrlMain]);
+/**
+ * Отметимся в Ангуляре как контроллер
+ */
+app.controller("ctrlMain", ["$scope", "ILST", ctrlMain]);
