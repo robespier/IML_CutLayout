@@ -12,3 +12,13 @@ interface CEPCommand {
    */
   data?: any;
 }
+
+/**
+ * Ответ ILST->CEP
+ */
+interface CEPResponse {
+  /**
+   * Статус обработки команды
+   */
+  status: string;
+}
