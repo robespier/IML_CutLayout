@@ -1,5 +1,6 @@
 import "angular";
 
+import { config } from "../config";
 import { CSInterface } from "CSInterface";
 
 const cs = new CSInterface();
@@ -22,7 +23,8 @@ const responseHandler = (result) => {
  * Результат исполнения `docCloser` отдастся тут responseHandler-у.
  */
 const action = (command) => {
-  cs.evalScript(`marshal(${JSON.stringify(command)})`, responseHandler);
+  const executor = `${config.connector}(${JSON.stringify(command)})`;
+  cs.evalScript(executor, responseHandler);
 };
 
 const service = () => {
