@@ -13,6 +13,11 @@ interface MainScope extends ng.IScope {
    * Выполнить что-либо на стороне ILST
    */
   go(): void;
+
+  /**
+   * Результат ILST действия
+   */
+  status: string;
 }
 
 const ctrlMain = ($scope: MainScope, ILST: ILSTService) => {
@@ -24,7 +29,9 @@ const ctrlMain = ($scope: MainScope, ILST: ILSTService) => {
   };
 
   $scope.go = () => {
-    ILST.dispatch(command);
+    ILST.dispatch(command).then(result => {
+      $scope.status = result.status;
+    });
   }
 }
 
