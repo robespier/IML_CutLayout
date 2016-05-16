@@ -7,6 +7,9 @@ module.exports = {
   options: {
     plugins: [],
     module: {
+      preLoaders: [
+        { test: /\.tsx?$/, loader: "tslint-loader" }
+      ],
       loaders: [
         { test: /\.tsx?$/, loader: "ts-loader" }
       ],
