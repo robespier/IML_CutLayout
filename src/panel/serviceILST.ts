@@ -1,39 +1,35 @@
 import "angular";
 
+import { config } from "../config";
 import { CSInterface } from "CSInterface";
 
 const cs = new CSInterface();
 
-/**
- * Обработчик ответа от ILST
- */
-const responseHandler = (result) => {
-  try {
-    JSON.parse(result);
-  } catch (err) {
-    console.error(result, err);
-  }
-};
+const service = ($q: angular.IQService): ILSTService => {
+  /**
+   * Передаём команду в функцию `marshal` из контекста ILST.
+   *
+   * @param {CEPCommand} command
+   */
+  const dispatch = (command: CEPCommand): ng.IPromise<CEPResponse> => {
+    const deferred = $q.defer();
+    const executor = `${config.connector}(${JSON.stringify(command)})`;
+    cs.evalScript(executor, (result) => {
+      try {
+        deferred.resolve(JSON.parse(result));
+      } catch (err) {
+        deferred.reject(err);
+      }
+    });
+    return deferred.promise;
+  };
 
-/**
- * Передаём команду в функцию `marshal` из контекста ILST.
- *
- * На той стороне маршал вытащит имя метода `docCloser` и выполнит его.
- * Результат исполнения `docCloser` отдастся тут responseHandler-у.
- */
-const action = (command) => {
-  cs.evalScript(`marshal(${JSON.stringify(command)})`, responseHandler);
-};
-
-const service = () => {
   return {
-    execute(params) {
-      action(params);
-    }
+    dispatch
   };
 };
 
 /**
  * Отметимся в Ангуляре как сервис
  */
-angular.module("iml").factory("ILST", service);
+angular.module("iml").factory("ILST", ["$q", service]);

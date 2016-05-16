@@ -8,7 +8,19 @@ const app = angular.module("iml", []);
  */
 import "./serviceILST";
 
-const ctrlMain = ($scope, ILST) => {
+interface MainScope extends ng.IScope {
+  /**
+   * Выполнить что-либо на стороне ILST
+   */
+  go(): void;
+
+  /**
+   * Результат ILST действия
+   */
+  status: string;
+}
+
+const ctrlMain = ($scope: MainScope, ILST: ILSTService) => {
   /**
    * Собираемся выполнить на стороне ILST метод `docCloser`, без параметров.
    */
@@ -17,7 +29,9 @@ const ctrlMain = ($scope, ILST) => {
   };
 
   $scope.go = () => {
-    ILST.execute(command);
+    ILST.dispatch(command).then(result => {
+      $scope.status = result.status;
+    });
   }
 }
 

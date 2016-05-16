@@ -1,4 +1,8 @@
 /**
+ * Общие интерфейсы компонентов приложения
+ */
+
+/**
  * Протокол CEP->ILST
  */
 interface CEPCommand {
@@ -11,4 +15,14 @@ interface CEPCommand {
    * Набор данных для этого метода
    */
   data?: any;
+}
+
+/**
+ * Ответ ILST->CEP
+ */
+interface CEPResponse {
+  /**
+   * Статус обработки команды
+   */
+  status: string;
 }

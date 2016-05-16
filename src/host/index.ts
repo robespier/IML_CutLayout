@@ -1,4 +1,5 @@
 import * as cepHandlers from "./handlers";
+import { config } from "../config";
 
 /**
  * Диспетчер команд CEP в Иллюстратор, великий и ужасный.
@@ -14,4 +15,4 @@ function marshal(cmd: CEPCommand): string {
 /**
  * Светим диспетчера в глобальной области, чтобы CEP смог за него зацепиться
  */
-$.global["marshal"] = marshal;
+$.global[config.connector] = marshal;
