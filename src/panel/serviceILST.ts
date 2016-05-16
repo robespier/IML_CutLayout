@@ -36,4 +36,4 @@ const service = () => {
 /**
  * Отметимся в Ангуляре как сервис
  */
-angular.module("CutLayout").factory("ILST", service);
+angular.module("iml").factory("ILST", service);

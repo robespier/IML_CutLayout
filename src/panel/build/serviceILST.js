@@ -20,4 +20,4 @@ var service = function () {
         }
     };
 };
-angular.module("CutLayout").factory("ILST", service);
+angular.module("iml").factory("ILST", service);

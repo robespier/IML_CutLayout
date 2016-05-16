@@ -13,6 +13,7 @@ module.exports = {
       ".debug",
       "CSXS/**",
       "index.html",
+      "section/**",
     ],
     dest: path.join(__dirname, "..", "<%= dist %>")
   },
@@ -30,6 +31,7 @@ module.exports = {
       ".debug",
       "css/**",
       "CSXS/**",
+      "section/**",
       "js/**",
       "jsx/**",
       "index.html",
