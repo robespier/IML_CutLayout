@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Моделирование раскладки контуров высечки для In-mould-этикеток.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "node_modules/.bin/tslint src/**/*.ts"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/domelaz/IML_CutLayout.git"
