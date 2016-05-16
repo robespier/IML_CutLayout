@@ -5,13 +5,13 @@ import { CSInterface } from "CSInterface";
 
 const cs = new CSInterface();
 
-const service = ($q: angular.IQService) => {
+const service = ($q: angular.IQService): ILSTService => {
   /**
    * Передаём команду в функцию `marshal` из контекста ILST.
    *
    * @param {CEPCommand} command
    */
-  const dispatch = (command: CEPCommand) => {
+  const dispatch = (command: CEPCommand): ng.IPromise<CEPResponse> => {
     const deferred = $q.defer();
     const executor = `${config.connector}(${JSON.stringify(command)})`;
     cs.evalScript(executor, (result) => {

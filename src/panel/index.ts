@@ -15,7 +15,7 @@ interface MainScope extends ng.IScope {
   go(): void;
 }
 
-const ctrlMain = ($scope: MainScope, ILST) => {
+const ctrlMain = ($scope: MainScope, ILST: ILSTService) => {
   /**
    * Собираемся выполнить на стороне ILST метод `docCloser`, без параметров.
    */
@@ -24,7 +24,7 @@ const ctrlMain = ($scope: MainScope, ILST) => {
   };
 
   $scope.go = () => {
-    ILST.execute(command);
+    ILST.dispatch(command);
   }
 }
 
