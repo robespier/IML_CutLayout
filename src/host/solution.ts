@@ -42,7 +42,7 @@ const saveSolution = (app: Application, data): void => {
   writer.close();
 };
 
-export const solution = (): string => {
+export const solution = (): CEPResponse => {
   const response: CEPResponse = {
     status: "success",
   };
@@ -79,5 +79,5 @@ export const solution = (): string => {
 
   saveSolution(app, solution);
 
-  return JSON.stringify(response);
+  return response;
 };

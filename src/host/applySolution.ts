@@ -1,4 +1,4 @@
-export const applySolution = (data: ISolution): string => {
+export const applySolution = (data: ISolution): CEPResponse => {
   const doc = app.activeDocument;
 
   /**
@@ -41,5 +41,5 @@ export const applySolution = (data: ISolution): string => {
   area.stroked = true;
   area.strokeColor = strColor;
 
-  return "done";
+  return { status: "success" };
 };

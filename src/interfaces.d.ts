@@ -25,6 +25,11 @@ interface CEPResponse {
    * Статус обработки команды
    */
   status: string;
+
+  /**
+   * Error object
+   */
+  error?: any;
 }
 
 /**
