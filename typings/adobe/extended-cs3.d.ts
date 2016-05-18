@@ -59,7 +59,7 @@ declare var $: {
    * Provides access to the Global object, which contains the JavaScript
    * global namespace.
    */
-  global: any;
+  global: Object;
 
   /**
    * The path for include files for the current script.
@@ -340,7 +340,34 @@ interface FolderStatic {
 }
 
 interface FolderInstance {
+  /**
+   * The platform-specific name of the referenced folder as a full path name.
+   *
+   * @readonly
+   */
+  fsName: string;
+
+  /**
+   * The full path name for the referenced folder in URI notation.
+   *
+   * @readonly
+   */
+  fullName: string;
+
+  /**
+   * The folder name portion of the absolute URI for the referenced file,
+   * without the path specification.
+   *
+   * @readonly
+   */
   name: string;
+
+  /**
+   * The Folder object for the folder that contains this folder, or null
+   * if this object refers to the root folder of a volume.
+   *
+   * @readonly
+   */
   parent: FolderInstance;
 }
 
@@ -350,7 +377,6 @@ interface FolderConstructor extends FolderStatic {
 }
 
 declare var Folder: FolderConstructor;
-
 
 /**
  * User Notification Dialogs
