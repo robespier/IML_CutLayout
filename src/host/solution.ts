@@ -49,7 +49,7 @@ export const solution = (): string => {
 
   app.activeDocument.pageOrigin = [0, 0];
 
-  const solution = {
+  const solution: ISolution = {
     area: [],
     cuts: [],
   };
@@ -61,7 +61,7 @@ export const solution = (): string => {
     const cut = cuts[i];
     solution.cuts.push({
       angle: 0,
-      pos: cut.position,
+      position: cut.position,
     });
   }
 
@@ -72,8 +72,8 @@ export const solution = (): string => {
     const point = points[i];
     solution.area.push({
       anchor: point.anchor,
-      l: point.leftDirection,
-      r: point.rightDirection,
+      leftPosition: point.leftDirection,
+      rightPosition: point.rightDirection,
     });
   }
 

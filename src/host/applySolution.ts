@@ -1,4 +1,4 @@
-export const applySolution = (data): string => {
+export const applySolution = (data: ISolution): string => {
   const doc = app.activeDocument;
 
   /**
@@ -11,7 +11,7 @@ export const applySolution = (data): string => {
 
   for (let i = 0, l = data.cuts.length; i < l; i++) {
     const c = original.duplicate(placementMarker, ElementPlacement.PLACEBEFORE);
-    c.position = data.cuts[i].pos;
+    c.position = data.cuts[i].position;
     c.rotate(data.cuts[i].angle);
   }
 
@@ -25,11 +25,11 @@ export const applySolution = (data): string => {
   const area = areaLayer.pathItems.add();
 
   for (let i = 0, l = data.area.length; i < l; i++) {
-    const { anchor, l, r } = data.area[i];
+    const { anchor, leftPosition, rightPosition } = data.area[i];
     const point = area.pathPoints.add();
     point.anchor = anchor;
-    point.leftDirection = l;
-    point.rightDirection = r;
+    point.leftDirection = leftPosition;
+    point.rightDirection = rightPosition;
   }
 
   area.closed = true;
