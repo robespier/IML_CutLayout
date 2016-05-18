@@ -7,6 +7,7 @@ const app = angular.module("iml", []);
  * В иной последовательности будет зихер.
  */
 import "./serviceILST";
+import "./serviceSolver";
 
 interface MainScope extends ng.IScope {
   /**
@@ -22,17 +23,23 @@ interface MainScope extends ng.IScope {
   status: string;
 }
 
-const ctrlMain = ($scope: MainScope, ILST: ILSTService) => {
-  /**
-   * Собираемся выполнить на стороне ILST метод `docCloser`, без параметров.
-   */
-  const command: CEPCommand = {
-    handler: "docCloser",
-  };
+const ctrlMain = (
+  $scope: MainScope,
+  ILST: ILSTService,
+  solver: SolverSerivce
+) => {
 
   $scope.go = () => {
-    ILST.dispatch(command).then(result => {
-      $scope.status = result.status;
+    solver.solve("something").then(result => {
+      /**
+       * Применяем решение на активном документе в ILST
+       */
+      const command: CEPCommand = {
+        handler: "applySolution",
+        data: result,
+      };
+
+      return ILST.dispatch(command);
     });
   };
 
@@ -55,4 +62,4 @@ const ctrlMain = ($scope: MainScope, ILST: ILSTService) => {
 /**
  * Отметимся в Ангуляре как контроллер
  */
-app.controller("ctrlMain", ["$scope", "ILST", ctrlMain]);
+app.controller("ctrlMain", ["$scope", "ILST", "Solver", ctrlMain]);
