@@ -5,18 +5,44 @@ import { app } from "./index";
  */
 import { solution as solution1 } from "./3075_eticetka.ai";
 
-const pump = (): ISolution => {
-  return solution1;
+const pump = (deferred): void => {
+  deferred.notify(solution1);
 };
 
-const service = ($timeout: ng.ITimeoutService) => {
+const service = ($timeout: ng.ITimeoutService, $q: ng.IQService) => {
   /**
    * Фейковая реализация Solver;
    *
    * Через произвольное время выдаём заранее известный результат
    */
   const solve = (data): ng.IPromise<ISolution> => {
-    return $timeout( pump, Math.random() * 10000 );
+    const deferred = $q.defer();
+    const fn = pump.bind(this, deferred);
+
+    $timeout( fn, Math.random() * 10000 ).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      return $timeout( fn, Math.random() * 10000 );
+    }).then(() => {
+      // Ctrl+V foreva, но промис нужно разрезолвить.
+      deferred.resolve();
+    });
+
+    return deferred.promise;
   };
 
   return {
@@ -27,4 +53,4 @@ const service = ($timeout: ng.ITimeoutService) => {
 /**
  * Отметимся в Ангуляре как сервис
  */
-app.factory("Solver", ["$timeout", service]);
+app.factory("Solver", ["$timeout", "$q", service]);
