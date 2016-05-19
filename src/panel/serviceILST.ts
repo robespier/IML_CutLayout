@@ -1,11 +1,11 @@
 import { app } from "./index";
 
 import { config } from "../config";
-import { CSInterface } from "CSInterface";
 
-const cs = new CSInterface();
-
-const service = ($q: angular.IQService): ILSTService => {
+const service = (
+  $q: ng.IQService,
+  cs: CSInterface.CSInterfaceInstance
+  ): ILSTService => {
   /**
    * Передаём команду в функцию `marshal` из контекста ILST.
    *
@@ -25,11 +25,11 @@ const service = ($q: angular.IQService): ILSTService => {
   };
 
   return {
-    dispatch
+    dispatch,
   };
 };
 
 /**
  * Отметимся в Ангуляре как сервис
  */
-app.factory("ILST", ["$q", service]);
+app.factory("ILST", ["$q", "CSInterface", service]);

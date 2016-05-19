@@ -7,6 +7,7 @@ const app = angular.module("iml", []);
  * В иной последовательности будет зихер.
  */
 import "./serviceILST";
+import "./serviceCSInterface";
 import "./serviceSolver";
 
 interface MainScope extends ng.IScope {
