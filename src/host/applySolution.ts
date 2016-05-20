@@ -1,16 +1,6 @@
 import { getLayer } from "./utils";
 
-export const applySolution = (data: ISolution): CEPResponse => {
-  const doc = app.activeDocument;
-
-  /**
-   * Нормализация оригинала при первом запуске
-   */
-  if (doc.layers.length === 1) {
-    doc.layers[0].name = "original";
-    // doc.rulerOrigin = [0, 0];
-  }
-
+const makeArtboard = (name: string, doc: Document, data: ISolution): number[] => {
   /**
    * Определение позиции нового артборда и вычисление смещения решения
    * относительно этой позиции
@@ -30,7 +20,23 @@ export const applySolution = (data: ISolution): CEPResponse => {
     top,
     nextArtWidth + deltaX,
     -nextArtHeight
-  ]).name = "Solution #n"; // todo: Add solution hash to interface
+  ]).name = name; // todo: Add solution hash to interface
+
+  return [deltaX, deltaY];
+};
+
+export const applySolution = (data: ISolution): CEPResponse => {
+  const doc = app.activeDocument;
+
+  /**
+   * Нормализация оригинала при первом запуске
+   */
+  if (doc.layers.length === 1) {
+    doc.layers[0].name = "original";
+    // doc.rulerOrigin = [0, 0];
+  }
+
+  const [ deltaX, deltaY ] = makeArtboard("Solution #n", doc, data);
 
   /**
    * Базовый контур и его положение относительно начала координат
