@@ -14,6 +14,8 @@ interface MainScope extends ng.IScope {
    */
   go(): void;
 
+  section: Object;
+
   /**
    * Результат ILST действия
    */
@@ -32,25 +34,25 @@ const ctrlMain = ($scope: MainScope, ILST: ILSTService) => {
     ILST.dispatch(command).then(result => {
       $scope.status = result.status;
     });
-  }
-}
+  };
+
+  $scope.section = {
+    action: "section/action.html",
+    advanced_options: "section/advanced_options.html",
+    forme_roller: "section/forme_roller.html",
+    label_type: "section/label_type.html",
+    layout_type: "section/layout_type.html",
+    material_name: "section/material_name.html",
+    material_width: "section/material_width.html",
+    nonworking_area: "section/non-working_area.html",
+    printing: "section/printing.html",
+    printing_machine: "section/printing_machine.html",
+    report_summary: "section/report_summary.html",
+    trim_offset: "section/trim_offset.html",
+  };
+};
 
 /**
  * Отметимся в Ангуляре как контроллер
  */
-app.controller("ctrlMain", ["$scope", "ILST", function($scope, ILST) {
-    $scope.section = {
-        label_type: 'section/label_type.html',
-        trim_offset: 'section/trim_offset.html',
-        material_name: 'section/material_name.html',
-        material_width: 'section/material_width.html',
-        nonworking_area: 'section/non-working_area.html',
-        printing_machine: 'section/printing_machine.html',
-        forme_roller: 'section/forme_roller.html',
-        layout_type: 'section/layout_type.html',
-        advanced_options: 'section/advanced_options.html',
-        printing: 'section/printing.html',
-        action: 'section/action.html',
-        report_summary: 'section/report_summary.html'
-    };
-}]);
+app.controller("ctrlMain", ["$scope", "ILST", ctrlMain]);

@@ -47,4 +47,4 @@ Temporary Items
 
 node_modules/
 dist/
-src/panel/build/
+src/*/build/
