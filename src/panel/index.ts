@@ -63,3 +63,7 @@ const ctrlMain = (
  * Отметимся в Ангуляре как контроллер
  */
 app.controller("ctrlMain", ["$scope", "ILST", "Solver", ctrlMain]);
+
+export {
+  app,
+}

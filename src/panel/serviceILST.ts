@@ -1,4 +1,4 @@
-import "angular";
+import { app } from "./index";
 
 import { config } from "../config";
 import { CSInterface } from "CSInterface";
@@ -32,4 +32,4 @@ const service = ($q: angular.IQService): ILSTService => {
 /**
  * Отметимся в Ангуляре как сервис
  */
-angular.module("iml").factory("ILST", ["$q", service]);
+app.factory("ILST", ["$q", service]);

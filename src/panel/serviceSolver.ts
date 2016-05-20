@@ -1,3 +1,5 @@
+import { app } from "./index";
+
 /**
  * Import predefined solutions
  */
@@ -25,4 +27,4 @@ const service = ($timeout: ng.ITimeoutService) => {
 /**
  * Отметимся в Ангуляре как сервис
  */
-angular.module("iml").factory("Solver", ["$timeout", service]);
+app.factory("Solver", ["$timeout", service]);
