@@ -30,6 +30,11 @@ interface CEPResponse {
    * Error object
    */
   error?: any;
+
+  /**
+   * Данные, возвращаемые методом
+   */
+  data?: any;
 }
 
 /**

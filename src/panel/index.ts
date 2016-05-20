@@ -29,18 +29,40 @@ const ctrlMain = (
   ILST: ILSTService,
   solver: SolverSerivce
 ) => {
-
   $scope.go = () => {
-    solver.solve("something").then(result => {
-      /**
-       * Применяем решение на активном документе в ILST
-       */
-      const command: CEPCommand = {
-        handler: "applySolution",
-        data: result,
-      };
+    /**
+     * Покажем фидбек Марине, что процесс пошел
+     */
+    $scope.status = "started";
 
-      return ILST.dispatch(command);
+    const getContour: CEPCommand = {
+      handler: "getContour",
+    };
+
+    /**
+     * Запрашиваем из ILST характеристики контура,
+     * подмешиваем к ним параметры из UI,
+     * передаем коктейль в solver,
+     */
+    ILST.dispatch(getContour).then(result => {
+      return solver.solve(result.data);
+    }).then(ready => {
+      $scope.status = "done!";
+    }, err => {
+      $scope.status = "solver failure: " + err;
+    }, notify => {
+      const applySolution: CEPCommand = {
+        data: notify,
+        handler: "applySolution",
+      };
+      $scope.status = "applying solution...";
+      ILST.dispatch(applySolution).then(() => {
+        if ($scope.status !== "done!") {
+          $scope.status = "calculate next solution...";
+        }
+      });
+    }).catch(err => {
+      $scope.status = "Global Facepalm! " + err;
     });
   };
 
