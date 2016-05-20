@@ -38,7 +38,7 @@ const saveSolution = (app: Application, data): void => {
   const writer = new File(outFolder.fullName + "/" + name);
 
   writer.open("w");
-  writer.write(JSON.stringify(data));
+  writer.write(JSON.stringify(data, null, "  "));
   writer.close();
 };
 
