@@ -1,25 +1,47 @@
 import { getLayer } from "./utils";
 
-const makeArtboard = (name: string, doc: Document, data: ISolution): number[] => {
+/**
+ * Создаём новый артборд, возвращаем дельты для позиционирования контуров
+ *
+ * @param {string} name Название монтажной области
+ * @param {Document} doc
+ * @param {ISolution} data
+ * @param {string} [orientation] В полосу или в колонку
+ * @return {array}
+ */
+const makeArtboard = (
+  name: string,
+  doc: Document,
+  data: ISolution,
+  orientation = "vertical"
+  ): number[] => {
+  /**
+   * Alias for orientation
+   */
+  const isVert = orientation === "horizontal";
+
+  /**
+   * Gutter between artboards
+   */
+  const gutter = 10;
+
   /**
    * Определение позиции нового артборда и вычисление смещения решения
    * относительно этой позиции
    */
   const lastArtboardIndex = doc.artboards.length - 1;
   const lastArtboard = doc.artboards[lastArtboardIndex];
-  const [ , top, right ] = lastArtboard.artboardRect;
+  const [ left, top, right, bottom ] = lastArtboard.artboardRect;
   const [ nextArtWidth, nextArtHeight ] = data.dimensions;
 
-  /**
-   * Создаём новый артборд справа
-   */
-  const deltaX = right + 10; // 10 -- gutter between artboards
-  const deltaY = 0;
+  const deltaX = isVert ? 0 : right + gutter;
+  const deltaY = isVert ? bottom - gutter : 0;
+
   doc.artboards.add([
-    deltaX,
-    top,
-    nextArtWidth + deltaX,
-    -nextArtHeight
+    isVert ? left : deltaX,
+    isVert ? deltaY : top,
+    isVert ? nextArtWidth : nextArtWidth + deltaX,
+    isVert ? bottom - nextArtHeight : -nextArtHeight,
   ]).name = name; // todo: Add solution hash to interface
 
   return [deltaX, deltaY];
@@ -59,9 +81,10 @@ export const applySolution = (data: ISolution): CEPResponse => {
     const c = original.duplicate(placementMarker, ElementPlacement.PLACEBEFORE);
 
     const { position, angle } = data.cuts[i];
+    const [ shiftX, shiftY ] = position;
 
     const mRotate = app.getRotationMatrix(angle);
-    const mPlace = app.concatenateTranslationMatrix(mZero, position[0], position[1]);
+    const mPlace = app.concatenateTranslationMatrix(mZero, shiftX, shiftY);
     const mGo = app.concatenateMatrix(mRotate, mPlace);
 
     c.transform(mGo, true, false, false, false, false, Transformation.CENTER);
