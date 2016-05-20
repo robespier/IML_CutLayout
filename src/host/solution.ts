@@ -47,12 +47,17 @@ export const solution = (): CEPResponse => {
     status: "success",
   };
 
-  app.activeDocument.pageOrigin = [0, 0];
+  const doc = app.activeDocument;
+  doc.pageOrigin = [0, 0];
 
   const solution: ISolution = {
     area: [],
     cuts: [],
+    dimensions: [],
   };
+
+  const dim = doc.artboards[0].artboardRect;
+  solution.dimensions = [Math.abs(dim[2] - dim[0]), Math.abs(dim[3] - dim[1])];
 
   const target = locateTarget(app);
   const cuts = target.pathItems;

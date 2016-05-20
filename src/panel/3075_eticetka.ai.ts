@@ -109,6 +109,10 @@ const solution: ISolution = {
     "angle": 0,
     "position": [639.573282618383, -491.947607568887],
   }],
+  "dimensions": [
+    1077.1654,
+    1260,
+  ],
 };
 
 export {

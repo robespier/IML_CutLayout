@@ -80,4 +80,9 @@ interface ISolution {
    * Размещения
    */
   cuts: IPlacement[];
+
+  /**
+   * Ширина пореза и длина вала, для которых рассчитано решение
+   */
+  dimensions: number[];
 }
