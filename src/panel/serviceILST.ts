@@ -1,11 +1,11 @@
-import "angular";
+import { app } from "./index";
 
 import { config } from "../config";
-import { CSInterface } from "CSInterface";
 
-const cs = new CSInterface();
-
-const service = ($q: angular.IQService): ILSTService => {
+const service = (
+  $q: ng.IQService,
+  cs: CSInterface.CSInterfaceInstance
+  ): ILSTService => {
   /**
    * Передаём команду в функцию `marshal` из контекста ILST.
    *
@@ -16,7 +16,12 @@ const service = ($q: angular.IQService): ILSTService => {
     const executor = `${config.connector}(${JSON.stringify(command)})`;
     cs.evalScript(executor, (result) => {
       try {
-        deferred.resolve(JSON.parse(result));
+        const response = <CEPResponse>JSON.parse(result);
+        if (response.error) {
+          deferred.reject(response.error);
+        } else {
+          deferred.resolve(response);
+        }
       } catch (err) {
         deferred.reject(err);
       }
@@ -25,11 +30,11 @@ const service = ($q: angular.IQService): ILSTService => {
   };
 
   return {
-    dispatch
+    dispatch,
   };
 };
 
 /**
  * Отметимся в Ангуляре как сервис
  */
-angular.module("iml").factory("ILST", ["$q", service]);
+app.factory("ILST", ["$q", "CSInterface", service]);

@@ -4,7 +4,7 @@
  * !!! MINIMAL !!!
  */
 
-declare module "CSInterface" {
+declare namespace CSInterface {
   interface CSInterfaceInstance {
     /**
      * Evaluates a JavaScript script, which can use the JavaScript DOM
@@ -22,5 +22,9 @@ declare module "CSInterface" {
     new(): CSInterfaceInstance;
   }
 
-  export var CSInterface: CSInterfaceConstructor;
+  var CSInterface: CSInterfaceConstructor;
+}
+
+declare module "CSInterface" {
+  export = CSInterface;
 }
