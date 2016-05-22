@@ -9,7 +9,7 @@ interface IMainScope extends ng.IScope {
    */
   go(): void;
 
-  section: Object;
+  sections: string[];
 
   /**
    * Результат ILST действия
@@ -59,20 +59,20 @@ const controller = (
     });
   };
 
-  $scope.section = {
-    action: "section/action.html",
-    advanced_options: "section/advanced_options.html",
-    forme_roller: "section/forme_roller.html",
-    label_type: "section/label_type.html",
-    layout_type: "section/layout_type.html",
-    material_name: "section/material_name.html",
-    material_width: "section/material_width.html",
-    nonworking_area: "section/non-working_area.html",
-    printing: "section/printing.html",
-    printing_machine: "section/printing_machine.html",
-    report_summary: "section/report_summary.html",
-    trim_offset: "section/trim_offset.html",
-  };
+  $scope.sections = [
+    "label_type",
+    "trim_offset",
+    "material_name",
+    "material_width",
+    "nonworking_area",
+    "printing_machine",
+    "forme_roller",
+    "layout_type",
+    "advanced_options",
+    "printing",
+    "action",
+    "report_summary",
+  ];
 };
 
 /**
