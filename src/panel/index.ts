@@ -3,11 +3,10 @@ import "angular";
 const app = angular.module("iml", []);
 
 /**
- * После того, как модуль создан, можно заявлять "наши" сервисы.
+ * После того, как модуль создан, можно заявлять "наши" компоненты.
  */
 import "./services";
-
-import "./ctrlMain";
+import "./controllers";
 
 export {
   app,
