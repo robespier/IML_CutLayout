@@ -18,3 +18,18 @@ interface ILSTService {
 interface SolverSerivce {
   solve(data: any): ng.IPromise<ISolution>;
 }
+
+/**
+ * Application state
+ */
+interface IAppState {
+  flow: IAppFlowState;
+  section: Object;
+}
+
+/**
+ * Application state `flow` stanza
+ */
+interface IAppFlowState {
+  status: string;
+}

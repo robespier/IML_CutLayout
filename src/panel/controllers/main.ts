@@ -18,6 +18,7 @@ interface IMainScope extends ng.IScope {
 }
 
 const controller = (
+  $ngRedux,
   $scope: IMainScope,
   ILST: ILSTService,
   solver: SolverSerivce
@@ -73,9 +74,26 @@ const controller = (
     "action",
     "report_summary",
   ];
+
+  /**
+   * Отражение свойств State на $scope
+   */
+  const mapStateToProps = (state: IAppState) => {
+    return {
+      status: state.flow.status,
+    };
+  };
+
+  $ngRedux.connect(mapStateToProps)($scope);
 };
 
 /**
  * Отметимся в Ангуляре как контроллер
  */
-app.controller("ctrlMain", ["$scope", "ILST", "Solver", controller]);
+app.controller("ctrlMain", [
+  "$ngRedux",
+  "$scope",
+  "ILST",
+  "Solver",
+  controller,
+]);
