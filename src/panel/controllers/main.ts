@@ -20,7 +20,7 @@ interface IMainScope extends ng.IScope {
 const controller = (
   $scope: IMainScope,
   ILST: ILSTService,
-  solver: SolverSerivce
+  solver: SolverService
   ) => {
   $scope.go = () => {
     /**
@@ -58,6 +58,7 @@ const controller = (
       $scope.status = "Global Facepalm! " + err;
     });
   };
+
 
   $scope.sections = [
     "label_type",

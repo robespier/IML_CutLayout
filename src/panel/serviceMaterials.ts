@@ -1,0 +1,177 @@
+import { app } from "./index";
+    const materials = (
+        [
+            {
+                label: "",
+                name: "любой",
+                type: "undefinded",
+                width: [],
+            },
+            {
+                label: "пленка белая",
+                name: "AISE 105 YUPO SYNTHETIC",
+                type: "white",
+                width: [235, 250, 252, 255, 380],
+            },
+            {
+                label: "пленка белая",
+                name: "ELR 70_Treofan",
+                type: "white",
+                width: [180, 240, 300, 370, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "EPT 60 Treofan",
+                type: "white",
+                width: [235, 370, 410],
+            },
+            {
+                label: "пленка прозрачная",
+                name: "ETH 57 Treofan",
+                type: "trans",
+                width: [170, 245, 265, 290, 330, 335, 350, 370, 380, 390, 400,
+                        410],
+            },
+            {
+                label: "пленка прозрачная",
+                name: "ETR 57 Treofan",
+                type: "trans",
+                width: [330, 333, 335, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "EUH 60 Treofan",
+                type: "white",
+                width: [230, 250, 290, 300, 306, 330, 335, 350, 355, 370, 375,
+                        390,	400, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "EUH 70 Treofan",
+                type: "white",
+                width: [230, 240, 290, 300, 330, 333, 335, 340, 365, 370, 390,
+                        400, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "EUP 50 Treofan",
+                type: "white",
+                width: [275, 335, 370, 400, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "EUP 60 Treofan",
+                type: "white",
+                width: [300, 400],
+            },
+            {
+                label: "пленка белая",
+                name: "EWR 57 Treofan",
+                type: "white",
+                width: [200, 330, 370, 400, 410],
+            },
+            {
+                label: "пленка прозрачная",
+                name: "IC 58",
+                type: "trans",
+                width: [270, 280, 330, 335, 370, 400, 410],
+            },
+            {
+                label: "пленка прозрачная",
+                name: "ICS +55",
+                type: "trans",
+                width: [310, 335, 370, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "IW 58",
+                type: "white",
+                width: [270, 290, 330, 333, 335, 370, 400, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "IW 72",
+                type: "white",
+                width: [110, 260, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "LB55 65 мкр",
+                type: "white",
+                width: [410],
+            },
+            {
+                label: "пленка белая",
+                name: "LB55 70 мкр",
+                type: "white",
+                width: [410],
+            },
+            {
+                label: "пленка белая",
+                name: "LB62 55 мкр",
+                type: "white",
+                width: [410],
+            },
+            {
+                label: "пленка белая",
+                name: "LB62 60 мкр",
+                type: "white",
+                width: [410],
+            },
+            {
+                label: "пленка белая",
+                name: "LB70 70 мкр",
+                type: "white",
+                width: [250, 300, 330, 370, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "LIH 70 мкр",
+                type: "white",
+                width: [435],
+            },
+            {
+                label: "пленка белая",
+                name: "LIQ142 60",
+                type: "white",
+                width: [340, 370, 400, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "LIT 50 мкр",
+                type: "white",
+                width: [335],
+            },
+            {
+                label: "пленка белая",
+                name: "LIV142 70 мкр",
+                type: "white",
+                width: [410],
+            },
+            {
+                label: "пленка белая",
+                name: "LIW 50 мкр",
+                type: "white",
+                width: [270],
+            },
+            {
+                label: "пленка белая",
+                name: "PQ-69 Az Pack",
+                type: "white",
+                width: [260, 300, 330, 410],
+            },
+            {
+                label: "пленка белая",
+                name: "TD47",
+                type: "white",
+                width: [330, 333, 340, 380, 410],
+            },
+            {
+                label: "пленка прозрачная",
+                name: "TD53",
+                type: "trans",
+                width: [330, 390, 410],
+            },
+        ]
+    );
+app.factory("materials", [materials]);

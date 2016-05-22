@@ -15,6 +15,13 @@ interface ILSTService {
 /**
  * Placements provider
  */
-interface SolverSerivce {
+interface SolverService {
   solve(data: any): ng.IPromise<ISolution>;
+}
+
+/**
+ * Materials provider
+ */
+interface MaterialsService {
+  materials();
 }
