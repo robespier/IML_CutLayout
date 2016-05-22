@@ -1,6 +1,6 @@
-import { app } from "./index";
+import { app } from "../index";
 
-import { config } from "../config";
+import { config } from "../../config";
 
 const service = (
   $q: ng.IQService,
