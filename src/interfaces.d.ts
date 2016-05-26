@@ -7,6 +7,11 @@ interface ICommonConfig {
    * Имя метода на стороне ILST, выполняющего запросы CEP
    */
   connector: string;
+
+  /**
+   * Данные пользователя по умолчанию
+   */
+  defaults: any;
 }
 
 /**
