@@ -7,6 +7,7 @@ const app = angular.module("iml", []);
  */
 import "./services";
 import "./controllers";
+import "./i18n";
 
 export {
   app,

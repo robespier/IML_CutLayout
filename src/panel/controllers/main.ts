@@ -10,6 +10,16 @@ interface IMainScope extends ng.IScope {
   go(): void;
 
   /**
+   * App language
+   */
+  lang: string;
+
+  /**
+   * Localization strings
+   */
+  t: Object;
+
+  /**
    * Результат ILST действия
    */
   status: string;
@@ -17,6 +27,7 @@ interface IMainScope extends ng.IScope {
 
 const controller = (
   $scope: IMainScope,
+  strings,
   ILST: ILSTService,
   solver: SolverSerivce
   ) => {
@@ -56,9 +67,22 @@ const controller = (
       $scope.status = "Global Facepalm! " + err;
     });
   };
+
+  /**
+   * Localization strings
+   * From state, from browser or Russian by default
+   */
+  const lang = $scope.lang || strings[navigator.language] || strings["ru"];
+  $scope.t = lang;
 };
 
 /**
  * Отметимся в Ангуляре как контроллер
  */
-app.controller("ctrlMain", ["$scope", "ILST", "Solver", controller]);
+app.controller("ctrlMain", [
+  "$scope",
+  "Strings",
+  "ILST",
+  "Solver",
+  controller,
+]);
