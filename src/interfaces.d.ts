@@ -11,7 +11,51 @@ interface ICommonConfig {
   /**
    * Данные пользователя по умолчанию
    */
-  defaults: any;
+  defaults: AppDataService;
+}
+
+/**
+ * Persistent user data
+ */
+interface AppDataService {
+  /**
+   * Массив характеристик запечатываемых материалов
+   */
+  materials?: IMaterials[];
+
+  /**
+   * Вал
+   */
+  materialHeight?: number;
+
+  /**
+   * Ширина рулона
+   */
+  materialWidth?: number;
+
+  /**
+   * Техническая область (обе рельсы)
+   */
+  nonWorkingArea?: number;
+
+  /**
+   * Поля на вылет
+   */
+  trimOffset?: number;
+}
+
+interface IValueItem {
+  id: string;
+  text: string;
+}
+
+interface ILabeledValueItem extends IValueItem {
+  label: string;
+}
+
+interface IMaterials extends ILabeledValueItem {
+  type: string;
+  width: number[];
 }
 
 /**

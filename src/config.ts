@@ -1,6 +1,8 @@
 export const config: ICommonConfig = {
   connector: "marshal",
   defaults: {
+    materialHeight: 444.5,
+    materialWidth: 410,
     materials: [
       {
         id: "0",
@@ -174,5 +176,7 @@ export const config: ICommonConfig = {
         width: [330, 390, 410],
       },
     ],
+    nonWorkingArea: 16,
+    trimOffset: 3,
   },
 };
