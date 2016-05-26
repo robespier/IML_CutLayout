@@ -1,0 +1,15 @@
+doctype html
+html(ng-app="iml")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title= locals.title
+    link(rel="stylesheet", ng-controller="ctrlThemeManager", type="text/css", href="assets/styles.css")
+  body
+    .iml-app-root
+      form(ng-controller="ctrlMain")
+        include sections.pug
+    if (process.env.NODE_ENV === "development")
+      script(src="http://localhost:8080/webpack-dev-server.js")
+    script(src="assets/scripts.js")

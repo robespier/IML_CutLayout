@@ -1,0 +1,3 @@
+each section in locals.sections
+  - const classes = section.classes ? section.classes : "section"
+  div(class=`${classes}` ng-include=`'section/${section.name}.html'`)

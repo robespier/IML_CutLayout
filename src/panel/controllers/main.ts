@@ -9,8 +9,6 @@ interface IMainScope extends ng.IScope {
    */
   go(): void;
 
-  sections: string[];
-
   /**
    * Результат ILST действия
    */
@@ -58,21 +56,6 @@ const controller = (
       $scope.status = "Global Facepalm! " + err;
     });
   };
-
-  $scope.sections = [
-    "label_type",
-    "trim_offset",
-    "material_name",
-    "material_width",
-    "nonworking_area",
-    "printing_machine",
-    "forme_roller",
-    "layout_type",
-    "advanced_options",
-    "printing",
-    "action",
-    "report_summary",
-  ];
 };
 
 /**

@@ -33,5 +33,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask("default", ["less", "webpack", "copy"]);
+  grunt.registerTask("default", ["less", "pug", "webpack", "copy"]);
 };
