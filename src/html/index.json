@@ -1,12 +1,9 @@
 {
   "sections": [
-    { "name": "label_type" },
-    { "name": "trim_offset" },
     { "name": "material_name"},
     { "name": "material_width", "classes": "section section-width"},
     { "name": "non-working_area" },
-    { "name": "printing_machine" },
-    { "name": "forme_roller" },
+    { "name": "trim_offset" },
     { "name": "advanced_options" },
     { "name": "printing" },
     { "name": "action" },
