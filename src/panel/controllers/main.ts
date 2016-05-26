@@ -17,7 +17,7 @@ interface IMainScope extends ng.IScope {
   /**
    * Localization strings
    */
-  t: Object;
+  t: ILocalizations;
 
   /**
    * Результат ILST действия
@@ -35,7 +35,7 @@ const controller = (
     /**
      * Покажем фидбек Марине, что процесс пошел
      */
-    $scope.status = "started";
+    $scope.status = $scope.t.status.started;
 
     const getContour: CEPCommand = {
       handler: "getContour",
@@ -49,22 +49,22 @@ const controller = (
     ILST.dispatch(getContour).then(result => {
       return solver.solve(result.data);
     }).then(ready => {
-      $scope.status = "done!";
+      $scope.status = $scope.t.status.done;
     }, err => {
-      $scope.status = "solver failure: " + err;
+      $scope.status = $scope.t.status.solverFail  + err;
     }, notify => {
       const applySolution: CEPCommand = {
         data: notify,
         handler: "applySolution",
       };
-      $scope.status = "applying solution...";
+      $scope.status = $scope.t.status.applying;
       ILST.dispatch(applySolution).then(() => {
-        if ($scope.status !== "done!") {
-          $scope.status = "calculate next solution...";
+        if ($scope.status !== $scope.t.status.done) {
+          $scope.status = $scope.t.status.next;
         }
       });
     }).catch(err => {
-      $scope.status = "Global Facepalm! " + err;
+      $scope.status = $scope.t.status.fuckup + err;
     });
   };
 
