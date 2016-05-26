@@ -1,10 +1,9 @@
 import { app } from "../index";
 
-import { config } from "../../config";
-
 const service = (
   $q: ng.IQService,
-  cs: CSInterface.CSInterfaceInstance
+  cs: CSInterface.CSInterfaceInstance,
+  config: ICommonConfig
   ): ILSTService => {
   /**
    * Передаём команду в функцию `marshal` из контекста ILST.
@@ -37,4 +36,4 @@ const service = (
 /**
  * Отметимся в Ангуляре как сервис
  */
-app.factory("ILST", ["$q", "CSInterface", service]);
+app.factory("ILST", ["$q", "CSInterface", "CommonConfig", service]);
