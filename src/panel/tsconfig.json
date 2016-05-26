@@ -1,4 +1,8 @@
 {
+  "atom": {
+    "rewriteTsconfig": true,
+    "formatOnSave": false
+  },
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
@@ -6,12 +10,28 @@
     "sourceMap": false,
     "outDir": "build"
   },
+  "filesGlob": [
+    "../../typings/node/node.d.ts",
+    "../../typings/adobe/csInterface.d.ts",
+    "../../typings/angularjs/angular.d.ts",
+    "../*.d.ts",
+    "./**/*.ts",
+    "!node_modules/**/*.*"
+  ],
   "files": [
     "../../typings/node/node.d.ts",
     "../../typings/adobe/csInterface.d.ts",
     "../../typings/angularjs/angular.d.ts",
-    "../interfaces.d.ts",
     "../angulars.d.ts",
-    "index.ts"
+    "../interfaces.d.ts",
+    "./controllers/index.ts",
+    "./controllers/main.ts",
+    "./controllers/thememanager.ts",
+    "./index.ts",
+    "./services/3075_eticetka.ai.ts",
+    "./services/csInterface.ts",
+    "./services/ilst.ts",
+    "./services/index.ts",
+    "./services/solver.ts"
   ]
 }

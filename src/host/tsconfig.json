@@ -1,4 +1,8 @@
 {
+  "atom": {
+    "rewriteTsconfig": true,
+    "formatOnSave": false
+  },
   "compilerOptions": {
     "module": "commonjs",
     "target": "es3",
@@ -7,11 +11,25 @@
     "sourceMap": false,
     "outDir": "build"
   },
+  "filesGlob": [
+    "../../typings/adobe/lib.core.d.ts",
+    "../../typings/adobe/extended-cs3.d.ts",
+    "../../typings/adobe/illustrator-cs3.d.ts",
+    "../interfaces.d.ts",
+    "./**/*.ts",
+    "!node_modules/**/*.*"
+  ],
   "files": [
     "../../typings/adobe/lib.core.d.ts",
     "../../typings/adobe/extended-cs3.d.ts",
     "../../typings/adobe/illustrator-cs3.d.ts",
     "../interfaces.d.ts",
-    "index.ts"
+    "./applySolution.ts",
+    "./constants.ts",
+    "./getContour.ts",
+    "./handlers.ts",
+    "./index.ts",
+    "./solution.ts",
+    "./utils.ts"
   ]
 }
