@@ -1,6 +1,3 @@
-export const config = {
-  /**
-   * Имя метода на стороне ILST, выполняющего запросы CEP
-   */
+export const config: ICommonConfig = {
   connector: "marshal",
 };
