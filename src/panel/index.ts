@@ -1,3 +1,4 @@
+import "jquery";
 import "angular";
 import "angular-local-storage";
 import "ng-redux";

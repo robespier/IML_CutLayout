@@ -56,7 +56,8 @@ const config = {
     ],
     module: {
       loaders: [
-        { test: /CSInterface\.js$/, loader: "exports?CSInterface=CSInterface" }
+        { test: /CSInterface\.js$/, loader: "exports?CSInterface=CSInterface" },
+        { test: /jquery\.js$/, loader: "expose?jQuery" }
       ]
     },
     output: {
