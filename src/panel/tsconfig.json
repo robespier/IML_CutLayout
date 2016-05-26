@@ -30,6 +30,7 @@
     "./index.ts",
     "./services/3075_eticetka.ai.ts",
     "./services/csInterface.ts",
+    "./services/CSInterfaceMock.ts",
     "./services/ilst.ts",
     "./services/index.ts",
     "./services/solver.ts"

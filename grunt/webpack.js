@@ -67,6 +67,27 @@ const config = {
 };
 
 /**
+ * Inject mock `CSInterface` object
+ *
+ * This allow develop frontend in ordinary browser with cool features
+ * like Angular Batarang or Hot Module Replacement
+ *
+ * @example
+ *
+ * Build dev bundle:
+ * `NODE_ENV="development" grunt webpack`
+ *
+ * Build production bundle (default):
+ * `grunt webpack`
+ */
+if (process.env.NODE_ENV === "development") {
+  const injector = Object.assign({}, config.options.resolve.alias, {
+    CSInterface: path.resolve(__dirname, "..", "<%= cepSrc %>", "services", "CSInterfaceMock.ts"),
+  });
+  config.options.resolve.alias = injector;
+}
+
+/**
  * Optimize bundles for production mode (default)
  */
 if (process.env.NODE_ENV !== "development") {
