@@ -14,6 +14,9 @@ module.exports = {
         { test: /\.tsx?$/, loader: "ts-loader" }
       ],
     },
+    output: {
+      pathinfo: true,
+    },
     resolve: {
       root: [
         path.resolve(__dirname, "..", "src/vendor")
@@ -32,7 +35,6 @@ module.exports = {
     output: {
       path: path.join(__dirname, "..", "<%= dist %>", "<%= ilstDstPath %>"),
       filename: "<%= ilstDstName %>",
-      pathinfo: true,
     },
     plugins: [
       new webpack.ProvidePlugin({
@@ -60,7 +62,6 @@ module.exports = {
     output: {
       path: path.join(__dirname, "..", "<%= dist %>", "<%= cepDstPath %>"),
       filename: "<%= cepDstName %>",
-      pathinfo: true,
     },
   }
 };
