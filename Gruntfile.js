@@ -21,7 +21,7 @@ module.exports = function(grunt) {
        * Browser-side sources and destination
        */
       cepSrc: "src/panel/",
-      cepDstPath: "js",
+      cepDstPath: "assets",
       cepDstName: "scripts.js",
 
       /**

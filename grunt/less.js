@@ -7,7 +7,7 @@ module.exports = {
   },
   app: {
     files: {
-      "<%= dist %>/css/styles.css": [ "src/less/main.less", "src/**/*.less" ]
+      "<%= dist %>/<%= cepDstPath %>/styles.css": [ "src/less/main.less", "src/**/*.less" ]
     }
   }
 };
