@@ -1,13 +1,16 @@
 import "angular";
+import "angular-local-storage";
 import "ng-redux";
 
 import rootReducer from "./reducers";
 
-const app = angular.module("iml", ["ngRedux"]);
+const app = angular.module("iml", ["LocalStorageModule", "ngRedux"]);
 
 app.config([
+  "localStorageServiceProvider",
   "$ngReduxProvider",
-  ($ngReduxProvider) => {
+  (localStorageServiceProvider, $ngReduxProvider) => {
+    localStorageServiceProvider.setPrefix("iml");
     $ngReduxProvider.createStoreWith(rootReducer);
 }]);
 
