@@ -3,7 +3,7 @@ import { app } from "../index";
 /**
  * Интерфейс $scope
  */
-interface IMainScope extends ng.IScope {
+interface IMainScope extends ng.IScope, AppDataService {
   /**
    * Выполнить что-либо на стороне ILST
    */
@@ -26,6 +26,7 @@ interface IMainScope extends ng.IScope {
 }
 
 const controller = (
+  $ngRedux,
   $scope: IMainScope,
   strings,
   ILST: ILSTService,
@@ -74,12 +75,24 @@ const controller = (
    */
   const lang = $scope.lang || strings[navigator.language] || strings["ru"];
   $scope.t = lang;
+
+  /**
+   * Отражение свойств state на $scope
+   */
+  const mapStateToProps = (state: IRootReducer) => {
+    return state.ui;
+  };
+
+  const disconnect = $ngRedux.connect(mapStateToProps)($scope);
+
+  $scope.$on("$destroy", disconnect);
 };
 
 /**
  * Отметимся в Ангуляре как контроллер
  */
 app.controller("ctrlMain", [
+  "$ngRedux",
   "$scope",
   "Strings",
   "ILST",
