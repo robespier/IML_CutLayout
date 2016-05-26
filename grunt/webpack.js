@@ -3,7 +3,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-module.exports = {
+const config = {
   options: {
     plugins: [],
     module: {
@@ -65,3 +65,28 @@ module.exports = {
     },
   }
 };
+
+/**
+ * Optimize bundles for production mode (default)
+ */
+if (process.env.NODE_ENV !== "development") {
+  config.options.plugins = [
+    new webpack.DefinePlugin({
+      "process.env": {
+        "NODE_ENV": JSON.stringify("production")
+      }
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      test: /\.jsx?$/,
+      "screw-ie8": true,
+      compress: true,
+      sourceMap: false,
+    })
+  ];
+
+  config.options.output.pathinfo = false;
+}
+
+module.exports = config;
