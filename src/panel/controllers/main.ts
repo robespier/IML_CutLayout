@@ -6,6 +6,11 @@ import { setAppData } from "../actions";
  */
 interface IMainScope extends ng.IScope, AppDataService {
   /**
+   * Simple binding with Redux store
+   */
+  change(data: string): void;
+
+  /**
    * Выполнить что-либо на стороне ILST
    */
   go(): void;
@@ -92,6 +97,19 @@ const controller = (
   const disconnect = $ngRedux.connect(mapStateToProps, {setAppData})($scope);
 
   $scope.$on("$destroy", disconnect);
+
+  /**
+   * Dispatch changes to Redux store
+   *
+   * Good old function style: we need `this` context as child controller scope
+   */
+  $scope.change = function(key) {
+    if (typeof(key) === "undefined") {
+      return;
+    }
+    const update = {[key]: this[key]};
+    $scope.setAppData(update);
+  };
 };
 
 /**
