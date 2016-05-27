@@ -24,6 +24,7 @@ app.run([ "AppData", (appdata) => { } ]);
  */
 import "./services";
 import "./controllers";
+import "./directives";
 import "./i18n";
 
 export {
