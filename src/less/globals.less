@@ -1,0 +1,51 @@
+@import "variables.less";
+
+@selectheight: @unit * 5;
+
+body {
+  padding: @unit;
+}
+
+.select2-container .select2-selection--single {
+  border-radius: 0;
+  height: @selectheight;
+
+  .select2-selection__rendered {
+    line-height: @unit * 4;
+  }
+
+  .select2-selection__arrow {
+    height: @selectheight - 2;
+    border: 1px solid;
+    top: 0;
+    right: 0;
+  }
+}
+
+.container-theme {
+  width: @unit * 40;
+}
+
+.section-width {
+  flex-direction: column;
+}
+
+.widths {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.iml-width {
+  min-width: @unit * 8;
+  border: 1px solid #bacbac;
+  margin: @unit / 2;
+  height: @unit * 4;
+  cursor: pointer;
+  &:hover {
+    background-color: #bafbac;
+  }
+}
+
+.iml-width--selected {
+  background-color: #bacbac;
+}
