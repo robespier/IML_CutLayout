@@ -15,6 +15,11 @@ app.config([
 }]);
 
 /**
+ * Init application settings at startup
+ */
+app.run([ "AppData", (appdata) => { } ]);
+
+/**
  * После того, как модуль создан, можно заявлять "наши" компоненты.
  */
 import "./services";
