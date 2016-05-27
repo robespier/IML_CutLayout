@@ -58,6 +58,20 @@ interface IMaterials extends ILabeledValueItem {
   width: number[];
 }
 
+/**
+ * Application state
+ */
+interface IAppState extends AppDataService {
+  status: string;
+}
+
+/**
+ * Reducers
+ */
+interface IRootReducer {
+  ui: IAppState
+}
+
 interface IReduxAction {
   type: string;
   payload: any;
