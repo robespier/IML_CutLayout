@@ -18,6 +18,9 @@ const config = {
       pathinfo: true,
     },
     resolve: {
+      alias: {
+        select2: path.resolve(__dirname, "..", "src/vendor/select2.full.js"),
+      },
       root: [
         path.resolve(__dirname, "..", "src/vendor")
       ],
