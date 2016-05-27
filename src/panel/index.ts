@@ -1,12 +1,14 @@
 import "angular";
 import "ng-redux";
 
+import rootReducer from "./reducers";
+
 const app = angular.module("iml", ["ngRedux"]);
 
 app.config([
   "$ngReduxProvider",
   ($ngReduxProvider) => {
-    $ngReduxProvider.createStoreWith({});
+    $ngReduxProvider.createStoreWith(rootReducer);
 }]);
 
 /**

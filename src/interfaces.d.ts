@@ -58,6 +58,11 @@ interface IMaterials extends ILabeledValueItem {
   width: number[];
 }
 
+interface IReduxAction {
+  type: string;
+  payload: any;
+}
+
 /**
  * Протокол CEP->ILST
  */
