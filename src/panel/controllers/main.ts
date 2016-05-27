@@ -1,4 +1,5 @@
 import { app } from "../index";
+import { setAppData } from "../actions";
 
 /**
  * Интерфейс $scope
@@ -8,6 +9,11 @@ interface IMainScope extends ng.IScope, AppDataService {
    * Выполнить что-либо на стороне ILST
    */
   go(): void;
+
+  /**
+   * Dispatch app settings to Redux store
+   */
+  setAppData(data: AppDataService): void;
 
   /**
    * App language
@@ -83,7 +89,7 @@ const controller = (
     return state.ui;
   };
 
-  const disconnect = $ngRedux.connect(mapStateToProps)($scope);
+  const disconnect = $ngRedux.connect(mapStateToProps, {setAppData})($scope);
 
   $scope.$on("$destroy", disconnect);
 };
