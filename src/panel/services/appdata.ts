@@ -12,7 +12,7 @@ const service = ($ngRedux, storage, config: ICommonConfig) => {
   /**
    * This fields from state is persistent:
    */
-  const storable = ["materials"];
+  const storable = ["material", "materials"];
 
   /**
    * Merge defaults with storable data

@@ -110,6 +110,20 @@ const controller = (
     const update = {[key]: this[key]};
     $scope.setAppData(update);
   };
+
+  /**
+   * Cascade update
+   *
+   * Clone widths of selected material
+   */
+  $scope.$watch("material", (next: IMaterials) => {
+    if (next) {
+      const update = {
+        widths: next.width.slice(0, 1), // min width by default
+      };
+      $scope.setAppData(update);
+    }
+  }, true);
 };
 
 /**

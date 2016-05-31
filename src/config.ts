@@ -1,6 +1,13 @@
 export const config: ICommonConfig = {
   connector: "marshal",
   defaults: {
+    material: {
+      id: "0",
+      label: "",
+      text: "любой",
+      type: "",
+      width: [410],
+    },
     materialHeight: 444.5,
     materialWidth: 410,
     materials: [

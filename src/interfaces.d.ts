@@ -19,6 +19,11 @@ interface ICommonConfig {
  */
 interface AppDataService {
   /**
+   * Выбранный в селекторе материал
+   */
+  material?: IMaterials;
+
+  /**
    * Массив характеристик запечатываемых материалов
    */
   materials?: IMaterials[];
