@@ -47,6 +47,11 @@ interface AppDataService {
    * Поля на вылет
    */
   trimOffset?: number;
+
+  /**
+   * Выбранные порезы
+   */
+  widths?: number[];
 }
 
 interface IValueItem {

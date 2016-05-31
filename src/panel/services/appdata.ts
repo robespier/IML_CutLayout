@@ -24,6 +24,10 @@ const service = ($ngRedux, storage, config: ICommonConfig) => {
     }
   });
 
+  if (typeof(appDefaults.widths) === "undefined") {
+    appDefaults.widths = appDefaults.material.width.slice(0);
+  }
+
   /**
    * Map service methods to state actions
    */
