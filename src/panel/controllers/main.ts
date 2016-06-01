@@ -46,15 +46,6 @@ const controller = (
   ) => {
   $scope.go = () => {
     /**
-     * Покажем фидбек Марине, что процесс пошел
-     */
-    $scope.status = $scope.t.status.started;
-
-    const getContour: CEPCommand = {
-      handler: "getContour",
-    };
-
-    /**
      * Copy application state without useless params as options for Solver
      */
     const options = <ICommonOptions>omit($ngRedux.getState().ui, [
@@ -62,30 +53,70 @@ const controller = (
     ]);
 
     /**
-     * Запрашиваем из ILST характеристики контура,
-     * подмешиваем к ним параметры из UI,
-     * передаем коктейль в solver,
+     * Run solver.start with contour and options, returns "main worker" Promise
      */
-    ILST.dispatch(getContour).then(result => {
-      return solver.start(result.data, options);
-    }).then(ready => {
+    const solverStart = (result: CEPResponse) => {
+      $scope.status = $scope.t.status.started;
+      return solver.start(<IFigure>result.data, options);
+    };
+
+    /**
+     * When Solver finished
+     */
+    const solverDone = () => {
       $scope.status = $scope.t.status.done;
-    }, err => {
+    };
+
+    /**
+     * Errors handler from ILST
+     */
+    const errIlst = (err) => {
+      solver.stop();
+      $scope.status = $scope.t.status.fuckup + err;
+    };
+
+    /**
+     * Errors handler from Solver
+     */
+    const errSolver = (err) => {
       $scope.status = $scope.t.status.solverFail  + err;
-    }, notify => {
+    };
+
+    /**
+     * Pass Solver result to ILST
+     */
+    const dispathSolution = (solution: ISolution) => {
       const applySolution: CEPCommand = {
-        data: notify,
+        data: solution,
         handler: "applySolution",
       };
+
       $scope.status = $scope.t.status.applying;
+
       ILST.dispatch(applySolution).then(() => {
         if ($scope.status !== $scope.t.status.done) {
           $scope.status = $scope.t.status.next;
         }
       });
-    }).catch(err => {
-      $scope.status = $scope.t.status.fuckup + err;
-    });
+    };
+
+    /**
+     * This method on ILST side provides <IFigure> object
+     */
+    const getContour: CEPCommand = {
+      handler: "getContour",
+    };
+
+    /**
+     * Here we go! Get initial contour from ILST and pass it to Solver
+     */
+    const runner = ILST.dispatch(getContour).then(solverStart, errIlst);
+
+    /**
+     * Dispatch solutions coming from Solver into ILST
+     * until Solver is done or user press Abort somehow
+     */
+    runner.then(solverDone, errSolver, dispathSolution);
   };
 
   /**
