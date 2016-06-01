@@ -1,5 +1,14 @@
 const solution: ISolution = {
-  "area": [{
+  "area": {
+    "direction": 1,
+    "placement": {
+      "angle": 0,
+      "position": [
+        0,
+        155.905496061496,
+      ],
+    },
+    "points": [{
     "anchor": [183.685594285578, 142.399611811023],
     "leftPosition": [174.6895, 142.430911811023],
     "rightPosition": [242.486392800145, 142.195511811024],
@@ -71,7 +80,7 @@ const solution: ISolution = {
     "anchor": [157.903394936891, 142.487511811023],
     "leftPosition": [157.903394936891, 142.487511811023],
     "rightPosition": [166.100594729813, 142.460111811022],
-  }],
+  }]},
   "cuts": [{
     "angle": 180,
     "position": [29.1200999598977, 124.744811811022],

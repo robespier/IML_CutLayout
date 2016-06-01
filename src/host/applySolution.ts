@@ -98,8 +98,12 @@ export const applySolution = (data: ISolution): CEPResponse => {
   const areaLayer = getLayer(doc, "area");
   const area = areaLayer.pathItems.add();
 
-  for (let i = 0, l = data.area.length; i < l; i++) {
-    const { anchor, leftPosition, rightPosition } = data.area[i];
+  area.polarity = data.area.direction === -1
+    ? PolarityValues.NEGATIVE
+    : PolarityValues.POSITIVE;
+
+  for (let i = 0, l = data.area.points.length; i < l; i++) {
+    const { anchor, leftPosition, rightPosition } = data.area.points[i];
     const point = area.pathPoints.add();
     point.anchor = anchor;
     point.leftDirection = leftPosition;

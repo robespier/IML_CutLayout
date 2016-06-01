@@ -178,7 +178,7 @@ interface ISolution {
   /**
    * Область размещения
    */
-  area: IPoint[];
+  area: IFigure;
 
   /**
    * Размещения

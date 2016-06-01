@@ -50,8 +50,15 @@ export const solution = (): CEPResponse => {
   const doc = app.activeDocument;
   doc.pageOrigin = [0, 0];
 
+  // Область размещения (циановая хрень)
+  const area = locateArea(app);
+
   const solution: ISolution = {
-    area: [],
+    area: {
+      direction: area.polarity === PolarityValues.NEGATIVE ? -1 : 1,
+      placement: { angle: 0, position: area.position },
+      points: [],
+    },
     cuts: [],
     dimensions: [],
   };
@@ -70,12 +77,11 @@ export const solution = (): CEPResponse => {
     });
   }
 
-  const area = locateArea(app);
   const points = area.pathPoints;
 
   for (let i = 0, l = points.length; i < l; i++) {
     const point = points[i];
-    solution.area.push({
+    solution.area.points.push({
       anchor: point.anchor,
       leftPosition: point.leftDirection,
       rightPosition: point.rightDirection,
