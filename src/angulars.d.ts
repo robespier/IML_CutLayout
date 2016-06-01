@@ -16,7 +16,7 @@ interface ILSTService {
  * Placements provider
  */
 interface SolverSerivce {
-  solve(data: any): ng.IPromise<ISolution>;
+  solve(data: IFigure, options: ICommonOptions): ng.IPromise<ISolution>;
 }
 
 /**

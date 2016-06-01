@@ -1,3 +1,4 @@
+import { omit } from "lodash";
 import { app } from "../index";
 import { setAppData } from "../actions";
 
@@ -54,12 +55,19 @@ const controller = (
     };
 
     /**
+     * Copy application state without useless params as options for Solver
+     */
+    const options = <ICommonOptions>omit($ngRedux.getState().ui, [
+      "material", "materials",
+    ]);
+
+    /**
      * Запрашиваем из ILST характеристики контура,
      * подмешиваем к ним параметры из UI,
      * передаем коктейль в solver,
      */
     ILST.dispatch(getContour).then(result => {
-      return solver.solve(result.data);
+      return solver.solve(result.data, options);
     }).then(ready => {
       $scope.status = $scope.t.status.done;
     }, err => {

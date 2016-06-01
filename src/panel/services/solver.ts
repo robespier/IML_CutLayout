@@ -15,7 +15,7 @@ const service = ($timeout: ng.ITimeoutService, $q: ng.IQService) => {
    *
    * Через произвольное время выдаём заранее известный результат
    */
-  const solve = (data): ng.IPromise<ISolution> => {
+  const solve = (data, options): ng.IPromise<ISolution> => {
     const deferred = $q.defer();
     const fn = pump.bind(this, deferred);
 
