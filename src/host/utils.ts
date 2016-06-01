@@ -15,6 +15,36 @@ const getLayer = (doc: Document, name: string): Layer => {
   }
 };
 
+/**
+ * Serialize contour
+ */
+const getContour = (path: PathItem): IFigure => {
+  /**
+   * Init countor object
+   */
+  const contour: IFigure = {
+    direction: path.polarity === PolarityValues.NEGATIVE ? -1 : 1,
+    placement: {
+      angle: 0,
+      position: path.position,
+    },
+    points: [],
+  };
+
+  for (let i = 0, l = path.pathPoints.length; i < l; i++) {
+    const point = path.pathPoints[i];
+    const description: IPoint = {
+      anchor: point.anchor,
+      leftPosition: point.leftDirection,
+      rightPosition: point.rightDirection,
+    };
+    contour.points.push(description);
+  }
+
+  return contour;
+};
+
 export {
+  getContour,
   getLayer,
 };
