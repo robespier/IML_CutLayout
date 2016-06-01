@@ -158,6 +158,20 @@ interface IPlacement {
 }
 
 /**
+ * Контур в ILST
+ */
+interface IFigure {
+  /**
+   * Направление (полярность)
+   */
+  direction: number;
+
+  placement: IPlacement;
+
+  points: IPoint[];
+}
+
+/**
  * Формат решения
  */
 interface ISolution {
