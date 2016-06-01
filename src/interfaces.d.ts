@@ -17,26 +17,11 @@ interface ICommonConfig {
 /**
  * Persistent user data
  */
-interface AppDataService {
-  /**
-   * Выбранный в селекторе материал
-   */
-  material?: IMaterials;
-
-  /**
-   * Массив характеристик запечатываемых материалов
-   */
-  materials?: IMaterials[];
-
+interface ICommonOptions {
   /**
    * Вал
    */
   materialHeight?: number;
-
-  /**
-   * Ширина рулона
-   */
-  materialWidth?: number;
 
   /**
    * Техническая область (обе рельсы)
@@ -52,6 +37,23 @@ interface AppDataService {
    * Выбранные порезы
    */
   widths?: number[];
+}
+
+interface AppDataService extends ICommonOptions {
+  /**
+   * Выбранный в селекторе материал
+   */
+  material?: IMaterials;
+
+  /**
+   * Массив характеристик запечатываемых материалов
+   */
+  materials?: IMaterials[];
+
+  /**
+   * Ширина пореза по умолчанию
+   */
+  materialWidth?: number;
 }
 
 interface IValueItem {
