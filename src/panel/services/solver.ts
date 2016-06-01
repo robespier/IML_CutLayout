@@ -5,19 +5,30 @@ import { app } from "../index";
  */
 import { solution as solution1 } from "./3075_eticetka.ai";
 
-const pump = (deferred): void => {
-  deferred.notify(solution1);
-};
+const service = (
+  $timeout: ng.ITimeoutService,
+  $q: ng.IQService
+  ): SolverSerivce => {
+  /**
+   * Service-level deferred object
+   */
+  let deferred: ng.IDeferred<ISolution>;
 
-const service = ($timeout: ng.ITimeoutService, $q: ng.IQService) => {
+  /**
+   * Send solution to upstream
+   */
+  const notify = (solution: ISolution) => {
+    deferred.notify(solution);
+  };
+
   /**
    * Фейковая реализация Solver;
    *
    * Через произвольное время выдаём заранее известный результат
    */
-  const solve = (data, options): ng.IPromise<ISolution> => {
-    const deferred = $q.defer();
-    const fn = pump.bind(this, deferred);
+  const start = (data, options): ng.IPromise<ISolution> => {
+    deferred = $q.defer();
+    const fn = notify.bind(this, solution1);
 
     $timeout( fn, Math.random() * 10000 ).then(() => {
       return $timeout( fn, Math.random() * 10000 );
@@ -45,8 +56,15 @@ const service = ($timeout: ng.ITimeoutService, $q: ng.IQService) => {
     return deferred.promise;
   };
 
+  const stop = (reason = "Aborted") => {
+    if (deferred) {
+      deferred.reject(reason);
+    }
+  };
+
   return {
-    solve,
+    start,
+    stop,
   };
 };
 

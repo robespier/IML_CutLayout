@@ -67,7 +67,7 @@ const controller = (
      * передаем коктейль в solver,
      */
     ILST.dispatch(getContour).then(result => {
-      return solver.solve(result.data, options);
+      return solver.start(result.data, options);
     }).then(ready => {
       $scope.status = $scope.t.status.done;
     }, err => {

@@ -16,7 +16,20 @@ interface ILSTService {
  * Placements provider
  */
 interface SolverSerivce {
-  solve(data: IFigure, options: ICommonOptions): ng.IPromise<ISolution>;
+  /**
+   * Send in-between result to app (async)
+   */
+  //notify(solution: ISolution): void;
+
+  /**
+   * Start main iterations loop
+   */
+  start(data: IFigure, options: ICommonOptions): ng.IPromise<ISolution>;
+
+  /**
+   * Abort
+   */
+  stop(reason?: string): void;
 }
 
 /**
