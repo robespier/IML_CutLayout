@@ -1,4 +1,4 @@
-import { omit } from "lodash";
+import { omit, zipObject } from "lodash";
 import { app } from "../index";
 import { setAppData } from "../actions";
 
@@ -6,11 +6,6 @@ import { setAppData } from "../actions";
  * Интерфейс $scope
  */
 interface IMainScope extends ng.IScope, AppDataService {
-  /**
-   * Simple binding with Redux store
-   */
-  change(data: string): void;
-
   /**
    * Выполнить что-либо на стороне ILST
    */
@@ -138,17 +133,15 @@ const controller = (
   $scope.$on("$destroy", disconnect);
 
   /**
-   * Dispatch changes to Redux store
-   *
-   * Good old function style: we need `this` context as child controller scope
+   * Dispatch "scalar" (binded with just `ng-model`) changes to Redux store
    */
-  $scope.change = function(key) {
-    if (typeof(key) === "undefined") {
-      return;
+  const bindings = ["nonWorkingArea", "printing", "trimOffset", "widths"];
+  $scope.$watchGroup(bindings, (next) => {
+    if (typeof(next) !== "undefined") {
+      const update = zipObject(bindings, next);
+      $scope.setAppData(update);
     }
-    const update = {[key]: this[key]};
-    $scope.setAppData(update);
-  };
+  });
 
   /**
    * Cascade update
