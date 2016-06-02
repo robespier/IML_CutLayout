@@ -1,0 +1,12 @@
+extends common
+block vars
+  - var moreClasses = ""
+block body
+  div {{t.labels.printing}}
+  input(
+    type="number"
+    min="0"
+    step="500"
+    ng-change="change('printing')"
+    name="printing"
+    ng-model="printing")

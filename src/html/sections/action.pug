@@ -1,0 +1,6 @@
+extends common
+block vars
+  - var moreClasses = ""
+block body
+  button(ng-click="go()") {{t.buttons.go}}
+  div(style="color: maroon;" ng-bind="status")

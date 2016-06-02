@@ -1,0 +1,11 @@
+extends common
+block vars
+  - var moreClasses = "section-widths"
+block body
+  div {{t.labels.materialWidth}}
+    input(type="text",
+      ng-change="change('widths');",
+      ng-model="widths",
+      disabled)
+    span {{t.commons.mm}}
+  iml-widths(ng-model="material")

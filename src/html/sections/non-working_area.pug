@@ -1,0 +1,12 @@
+extends common
+block vars
+  - var moreClasses = ""
+block body
+  div {{t.labels.nonWorkingArea}}
+  input(
+    type="number"
+    min="0"
+    ng-change="change('nonWorkingArea')"
+    ng-model="nonWorkingArea"
+    name="nonWorkingArea")
+  span {{t.commons.mm}}

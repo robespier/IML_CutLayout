@@ -1,13 +1,3 @@
 {
-  "sections": [
-    { "name": "material_name"},
-    { "name": "material_width", "classes": "section section-width"},
-    { "name": "non-working_area" },
-    { "name": "trim_offset" },
-    { "name": "advanced_options" },
-    { "name": "printing" },
-    { "name": "action" },
-    { "name": "report_summary" }
-  ],
   "title": "IML Cut Layout"
 }
