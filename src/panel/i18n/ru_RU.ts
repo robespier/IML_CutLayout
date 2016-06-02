@@ -10,6 +10,7 @@ const ru: ILocalizations = {
     materialName: "Материал",
     materialWidth: "Порез",
     nonWorkingArea: "Нерабочая область",
+    optArbitrary: "Разрешить произвольную раскладку",
     printing: "Тираж",
     reportSummary: "Сводный отчет",
     trimOffset: "Отступ на вылет",

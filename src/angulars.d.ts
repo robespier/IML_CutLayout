@@ -47,6 +47,7 @@ interface ILocalizations {
     materialName: string;
     materialWidth: string;
     nonWorkingArea: string;
+    optArbitrary: string;
     printing: string;
     reportSummary: string;
     trimOffset: string;
