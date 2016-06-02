@@ -12,8 +12,6 @@ module.exports = {
     src: [
       ".debug",
       "CSXS/**",
-      "index.html",
-      "section/**",
     ],
     dest: path.join(__dirname, "..", "<%= dist %>")
   },
@@ -29,10 +27,8 @@ module.exports = {
     cwd: path.join(__dirname, "..", "<%= dist %>"),
     src: [
       ".debug",
-      "css/**",
+      "<%= cepDstPath %>/**",
       "CSXS/**",
-      "section/**",
-      "js/**",
       "jsx/**",
       "index.html",
     ],
