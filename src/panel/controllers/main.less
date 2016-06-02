@@ -1,0 +1,25 @@
+@import "variables.less";
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid;
+  margin: @unit 0;
+  padding: @unit;
+  .ng-invalid {
+    box-shadow: 0 0 10px red;
+    color: red;
+  }
+  .ng-valid.ng-dirty {
+    color: green;
+  }
+}
+
+.section-theme {
+  border-color: @darkGray50;
+  color: @darkGray50;
+}
+
+.section-label {
+}
