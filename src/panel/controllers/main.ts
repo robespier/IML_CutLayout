@@ -157,7 +157,8 @@ const controller = (
   /**
    * Dispatch "scalar" (binded with just `ng-model`) changes to Redux store
    */
-  const bindings = ["nonWorkingArea", "printing", "trimOffset", "widths"];
+  const bindings = ["nonWorkingArea", "printing", "restrict", "trimOffset",
+    "widths"];
   $scope.$watchGroup(bindings, (next) => {
     if (typeof(next) !== "undefined") {
       const update = zipObject(bindings, next);

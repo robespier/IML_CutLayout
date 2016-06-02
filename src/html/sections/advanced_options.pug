@@ -1,0 +1,9 @@
+extends common
+block vars
+  - var moreClasses = "iml-section-options"
+block body
+  .iml-options-list
+    ul
+      li
+        input(type="checkbox" ng-model="restrict.rotation")
+        span(class="iml-option-label") {{t.labels.optArbitrary}}
