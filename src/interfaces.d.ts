@@ -19,22 +19,42 @@ interface ICommonConfig {
  */
 interface ICommonOptions {
   /**
-   * Вал
+   * Ограничение высоты непрямоугольной ОЗ, % от вала
+   */
+  floatingEdge?: number;
+
+  /**
+   * Вал, мм.
    */
   materialHeight?: number;
 
   /**
-   * Техническая область (обе рельсы)
+   * Техническая область (обе рельсы), мм.
    */
   nonWorkingArea?: number;
 
   /**
-   * Поля на вылет
+   * Ограничения на размещение контура в ОЗ
+   */
+  restrict?: {
+    /**
+     * Разрешить наложение ручьев
+     */
+    overlap: boolean;
+
+    /**
+     * Разрешить поворот контуров
+     */
+    rotation: boolean;
+  },
+
+  /**
+   * Поля на вылет, мм.
    */
   trimOffset?: number;
 
   /**
-   * Выбранные порезы
+   * Выбранные порезы, мм.
    */
   widths?: number[];
 }
