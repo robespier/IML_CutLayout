@@ -27,6 +27,10 @@ module.exports = {
     files: "<%= extSrc %>/**/*.*",
     tasks: ["copy:extension"],
   },
+  html: {
+    files: "src/html/**/*",
+    tasks: ["pug"],
+  },
   sync: {
     files: ["<%= dist %>/**/*.*"],
     tasks: syncTask,
