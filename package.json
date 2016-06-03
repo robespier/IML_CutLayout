@@ -29,6 +29,8 @@
     "load-grunt-config": "^0.19.2",
     "lodash": "^3.10.1",
     "normalize.css": "^4.1.1",
+    "stylelint": "^6.5.1",
+    "stylelint-config-standard": "^8.0.0",
     "ts-loader": "^0.8.2",
     "tslint": "^3.10.1",
     "tslint-loader": "^2.1.4",
