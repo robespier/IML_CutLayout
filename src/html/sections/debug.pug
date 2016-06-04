@@ -1,0 +1,24 @@
+//-
+//- Эта секция под нож пойдет, никаких внешних зависимостей НЕ ИСПОЛЬЗОВАТЬ
+//-
+extends common
+block vars
+  - var moreClasses = ""
+block body
+  div(style="padding-top: 20px;")
+    ul(style="list-style-type: none; -webkit-padding-start: 0")
+      li(style="margin: 4px 0")
+        button(ng-click="saveTask()" title="Создать задание для Solver в файл json") Save task
+        span <b>Требования:</b> один контур в документе
+      li(style="margin: 4px 0")
+        button(ng-click="testSolution()" title="Применить задание из Solver к контуру") Apply solution
+        span <b>Требования:</b> один слой и один контур в документе
+      li(style="margin: 4px 0")
+        button(ng-click="createSolution()" title="Создать solution.json из готовой сборки") Create solution
+        span <b>Требования:</b> Все контуры на слое <b>cut</b> разгруппированы <b>полностью</b>, ОЗ на другом слое <b>выбрана</b>. Файл сохранится в %TEMP%
+      li(style="margin: 4px 0")
+        button(ng-click="inspect()") Inspect
+        span Дамп в консоль <code>state</code> и <code>scope</code>
+      li(style="margin: 4px 0")
+        button(onclick="location.reload()") Reload
+        span Перезагрузить CEP компонент приложения

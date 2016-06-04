@@ -33,7 +33,7 @@ const locateArea = (app: Application): PathItem => {
 
 const saveSolution = (app: Application, data): void => {
   const doc = app.activeDocument;
-  const outFolder = new File($.fileName).parent;
+  const outFolder = new File($.getenv("TEMP"));
   const name = doc.fullName.name.replace(/\.ai$/, ".json");
   const writer = new File(outFolder.fullName + "/" + name);
 

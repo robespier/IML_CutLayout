@@ -7,3 +7,5 @@ form(ng-controller="ctrlMain")
   include printing
   include action
   include report_summary
+  if (process.env.NODE_ENV !== "production")
+    include debug

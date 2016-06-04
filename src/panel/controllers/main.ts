@@ -22,6 +22,14 @@ interface IMainScope extends ng.IScope, AppDataService {
   setAppData(data: AppDataService): void;
 
   /**
+   * Dev stuff, doomed
+   */
+  inspect(): void;
+  createSolution(): void;
+  testSolution(): void;
+  saveTask(): void;
+
+  /**
    * App language
    */
   lang: string;
@@ -170,6 +178,73 @@ const controller = (
       $scope.setAppData(update);
     }
   }, true);
+
+  /**
+   * Debug
+   */
+  $scope.inspect = () => {
+    const state = $ngRedux.getState();
+    console.log("State and scope", state, $scope);
+  };
+
+  /**
+   * Debug
+   */
+  $scope.createSolution = () => {
+    ILST.dispatch({ handler: "solution" });
+  };
+
+  /**
+   * Debug
+   */
+  $scope.testSolution = () => {
+    const userSelection = window["cep"].fs.showOpenDialogEx(
+      false,
+      false,
+      "Select solution"
+    );
+    const fileName = userSelection.data[0];
+
+    if (typeof(fileName) === "undefined") {
+      return; // User hit Cancel
+    }
+
+    const solutionData = window["cep"].fs.readFile(fileName);
+
+    try {
+      const solution = JSON.parse(solutionData.data);
+      ILST.dispatch({ data: solution, handler: "applySolution"});
+    } catch (e) {
+      $scope.status = "Not valid JSON";
+    }
+  };
+
+  /**
+   * Debug
+   */
+  $scope.saveTask = () => {
+    const userSelection = window["cep"].fs.showSaveDialogEx("Save task");
+
+    const fileName = userSelection.data;
+
+    if (typeof(fileName) === "undefined") {
+      return; // User hit Cancel
+    }
+
+    ILST.dispatch({handler: "getContour"}).then(result => {
+      /**
+       * @fixme Херовско станет, если сигнатура `solver.start` изменится
+       */
+      const data = [
+        result.data,
+        $scope.getopt(),
+      ];
+
+      const task = JSON.stringify(data, null, "  ");
+
+      window["cep"].fs.writeFile(fileName, task);
+    });
+  };
 };
 
 /**
