@@ -2,10 +2,12 @@ extends common
 block vars
   - var moreClasses = ""
 block body
-  div {{t.labels.printing}}
-  input(
-    type="number"
-    min="0"
-    step="500"
-    name="printing"
-    ng-model="printing")
+  .grid-label.x8
+    span {{t.labels.printing}}
+  .grid-input.x4
+    input(
+      type="number"
+      min="0"
+      step="500"
+      name="printing"
+      ng-model="printing")
