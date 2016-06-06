@@ -2,7 +2,9 @@ extends common
 block vars
   - var moreClasses = ""
 block body
-  .section-label {{t.labels.materialName}}
-  .section-control
-    select(iml-select2, items="materials", active-item="material", update="setAppData")
-    div(ng-bind="material.label")
+  .iml-input-group
+    .grid-label.x4
+      span {{t.labels.materialName}}
+    .grid-input.x8
+      select(iml-select2, items="materials", active-item="material", update="setAppData")
+  div(ng-bind="material.label")

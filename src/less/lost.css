@@ -27,7 +27,11 @@
   }
 }
 
-.iml-section {
+.iml-section, .iml-input-group {
   lost-utility: clearfix;
   lost-flex-container: row;
+}
+
+.iml-input-group {
+  width: 100%;
 }
