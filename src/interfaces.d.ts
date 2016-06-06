@@ -74,6 +74,11 @@ interface AppDataService extends ICommonOptions {
    * Ширина пореза по умолчанию
    */
   materialWidth?: number;
+
+  /**
+   * Тираж, шт.
+   */
+  printing?: number;
 }
 
 interface IValueItem {

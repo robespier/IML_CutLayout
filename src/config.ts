@@ -185,6 +185,7 @@ export const config: ICommonConfig = {
       },
     ],
     nonWorkingArea: 16,
+    printing: 50000,
     trimOffset: 3,
   },
 };

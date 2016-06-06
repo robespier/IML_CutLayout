@@ -4,6 +4,7 @@ const ru: ILocalizations = {
   },
   commons: {
     mm: "мм",
+    cnt: "шт",
   },
   labels: {
     advancedOptions: "Настройки",

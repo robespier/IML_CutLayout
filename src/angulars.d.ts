@@ -41,6 +41,7 @@ interface ILocalizations {
   };
   commons: {
     mm: string;
+    cnt: string;
   };
   labels: {
     advancedOptions: string;
