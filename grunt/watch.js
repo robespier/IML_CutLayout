@@ -12,7 +12,7 @@ if (process.platform === "win32") {
 
 module.exports = {
   less: {
-    files: ["less/main.less", "src/**/*.less"],
+    files: ["src/less/main.less", "src/**/*.less"],
     tasks: ["less"],
   },
   adobejsx: {
@@ -30,6 +30,10 @@ module.exports = {
   html: {
     files: "src/html/**/*",
     tasks: ["pug"],
+  },
+  grid: {
+    files: "src/less/lost.css",
+    tasks: ["postcss", "less"],
   },
   sync: {
     files: ["<%= dist %>/**/*.*"],
