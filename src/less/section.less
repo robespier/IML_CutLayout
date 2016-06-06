@@ -1,0 +1,14 @@
+@import "variables.less";
+
+.iml-section {
+  margin: @unit 0;
+  padding: @unit;
+  border: 1px solid;
+  .ng-invalid {
+    box-shadow: 0 0 10px @invalid;
+    color: @invalid;
+  }
+  .ng-valid.ng-dirty {
+    color: @valid;
+  }
+}

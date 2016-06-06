@@ -26,3 +26,8 @@
     width: 100%
   }
 }
+
+.iml-section {
+  lost-utility: clearfix;
+  lost-flex-container: row;
+}
