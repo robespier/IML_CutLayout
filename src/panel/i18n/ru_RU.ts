@@ -15,6 +15,10 @@ const ru: ILocalizations = {
     reportSummary: "Сводный отчет",
     trimOffset: "Отступ на вылет",
   },
+  messages: {
+    warnArbitrary: `ВНИМАНИЕ! Включение данной опции разрешает создание
+      раскладок, сложных для собирания этикеток на Shober.`,
+  },
   status: {
     applying: "applying solution...",
     done: "done!",

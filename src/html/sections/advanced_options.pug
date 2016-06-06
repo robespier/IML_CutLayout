@@ -7,3 +7,5 @@ block body
       li
         input(type="checkbox" ng-model="restrict.rotation")
         span(class="iml-option-label") {{t.labels.optArbitrary}}
+  .iml-options-warning(ng-show="restrict.rotation")
+    span {{t.messages.warnArbitrary}}

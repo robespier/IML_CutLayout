@@ -52,6 +52,9 @@ interface ILocalizations {
     reportSummary: string;
     trimOffset: string;
   };
+  messages: {
+    warnArbitrary: string;
+  };
   status: {
     applying: string;
     done: string;
