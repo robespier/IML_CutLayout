@@ -17,6 +17,10 @@
   lost-column: 12/12;
 }
 
+.after4 {
+  lost-offset: -1/3;
+}
+
 .grid-label {
   lost-align: middle-left;
 }
