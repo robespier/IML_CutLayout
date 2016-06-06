@@ -2,9 +2,12 @@ extends common
 block vars
   - var moreClasses = "iml-section--widths"
 block body
-  div {{t.labels.materialWidth}}
-    input(type="text",
-      ng-model="widths",
-      disabled)
-    span {{t.commons.mm}}
+  .iml-input-group
+    .grid-label.x4
+      span {{t.labels.materialWidth}}
+        span(class="iml-append--comma") {{t.commons.mm}}
+    .grid-input.x8
+      input(type="text",
+        ng-model="widths",
+        disabled)
   iml-widths(ng-model="material")
