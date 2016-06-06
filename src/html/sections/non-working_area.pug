@@ -2,10 +2,12 @@ extends common
 block vars
   - var moreClasses = ""
 block body
-  div {{t.labels.nonWorkingArea}}
-  input(
-    type="number"
-    min="0"
-    ng-model="nonWorkingArea"
-    name="nonWorkingArea")
-  span {{t.commons.mm}}
+  .grid-label.x8
+    span {{t.labels.nonWorkingArea}}
+      span(class="iml-append--comma") {{t.commons.mm}}
+  .grid-input.x4
+    input(
+      type="number"
+      min="0"
+      ng-model="nonWorkingArea"
+      name="nonWorkingArea")
