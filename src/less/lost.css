@@ -1,0 +1,28 @@
+@lost gutter 4px;
+@lost flexbox flex;
+
+.x4 {
+  lost-column: 4/12;
+}
+
+.x6 {
+  lost-column: 6/12;
+}
+
+.x8 {
+  lost-column: 8/12;
+}
+
+.x12 {
+  lost-column: 12/12;
+}
+
+.grid-label {
+  lost-align: middle-left;
+}
+
+.grid-input {
+  button, input, select {
+    width: 100%
+  }
+}
