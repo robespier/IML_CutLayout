@@ -1,6 +1,6 @@
 import { app } from "../index";
 
-const wrapperClass = "widths";
+const wrapperClass = "iml-widths";
 const widthsClass = "iml-width";
 const activeWidthClass = "iml-width--selected";
 
@@ -11,7 +11,7 @@ const render = (values: number[], selected: number[]) => {
     if (selected.lastIndexOf(val) !== -1) {
       classes.push(activeWidthClass);
     }
-    wrapped += `<span class="${classes.join(" ")}">${val}</span>`;
+    wrapped += `<span class="${classes.join(" ")}"><span>${val}</span></span>`;
   });
   return `<div class="${wrapperClass}">${wrapped}</div>`;
 };

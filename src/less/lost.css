@@ -31,11 +31,20 @@
   }
 }
 
-.iml-section, .iml-input-group {
+.iml-section, .iml-input-group, .iml-widths {
   lost-utility: clearfix;
   lost-flex-container: row;
 }
 
 .iml-input-group {
   width: 100%;
+}
+
+/**
+ * `Width` button
+ */
+.iml-width {
+  lost-align: middle-center;
+  lost-column: 1/4;
+  flex-grow: 1;
 }
