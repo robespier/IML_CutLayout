@@ -57,7 +57,7 @@ const controller = (
    */
   $scope.getopt = () => {
     const options = <ICommonOptions>omit($ngRedux.getState().ui, [
-      "material", "materials",
+      "material", "materials", "materialWidth", "printing",
     ]);
 
     return options;

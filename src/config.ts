@@ -1,6 +1,7 @@
 export const config: ICommonConfig = {
   connector: "marshal",
   defaults: {
+    floatingEdge: 50,
     material: {
       id: "0",
       label: "",
