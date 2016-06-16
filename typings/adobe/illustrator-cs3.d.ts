@@ -2708,6 +2708,14 @@ interface PathItem extends BaseProps<Layer> {
   filled: boolean;
 
   /**
+   * The bounds of the object excluding stroke width.
+   * Array of 4 numbers
+   *
+   * @readonly
+   */
+  geometricBounds: number[];
+
+  /**
    * The name of this item.
    */
   name: string;

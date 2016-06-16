@@ -5,6 +5,7 @@
  * Область размещения должна быть выделена (активна)
  */
 import { ERR } from "./constants";
+import { getCenter } from "./utils";
 
 const locateTarget = (app: Application): Layer => {
   if (app.documents.length === 0) {
@@ -73,7 +74,7 @@ export const solution = (): CEPResponse => {
     const cut = cuts[i];
     solution.cuts.push({
       angle: 0,
-      position: cut.position,
+      position: getCenter(cut),
     });
   }
 

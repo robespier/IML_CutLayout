@@ -16,6 +16,17 @@ const getLayer = (doc: Document, name: string): Layer => {
 };
 
 /**
+ * Calculate center of contour by bounds
+ *
+ * @param {PathItem} path
+ * @return {Array}
+ */
+const getCenter = (path: PathItem): number[] => {
+  const [ left, top, right, bottom] = path.geometricBounds;
+  return [ (right - left) / 2 + left, (bottom - top) / 2 + top ];
+};
+
+/**
  * Serialize contour
  */
 const getContour = (path: PathItem): IFigure => {
@@ -45,6 +56,7 @@ const getContour = (path: PathItem): IFigure => {
 };
 
 export {
+  getCenter,
   getContour,
   getLayer,
 };

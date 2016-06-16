@@ -1,4 +1,4 @@
-import { getLayer } from "./utils";
+import { getCenter, getLayer } from "./utils";
 
 /**
  * Создаём новый артборд, возвращаем дельты для позиционирования контуров
@@ -64,7 +64,7 @@ export const applySolution = (data: ISolution): CEPResponse => {
    * Базовый контур и его положение относительно начала координат
    */
   const original = doc.layers.getByName("original").pathItems[0];
-  const [ origX, origY ] = original.position;
+  const [ origX, origY ] = getCenter(original);
   const mZero = app.getTranslationMatrix(deltaX - origX, deltaY - origY);
 
   /**
@@ -77,15 +77,19 @@ export const applySolution = (data: ISolution): CEPResponse => {
    * Размещение высечек на слой "layout"
    */
   for (let i = 0, l = data.cuts.length; i < l; i++) {
-    // Ожидается, что целевой контур находится внутри страницы, не на полях
     const c = original.duplicate(placementMarker, ElementPlacement.PLACEBEFORE);
 
     const { position, angle } = data.cuts[i];
-    const [ shiftX, shiftY ] = position;
+    let [ shiftX, shiftY ] = position;
 
-    const mRotate = app.getRotationMatrix(angle);
-    const mPlace = app.concatenateTranslationMatrix(mZero, shiftX, shiftY);
-    const mGo = app.concatenateMatrix(mRotate, mPlace);
+    if (angle !== 0) {
+      c.rotate(angle);
+      const corrections = getCenter(c);
+      shiftX += origX - corrections[0];
+      shiftY += origY - corrections[1];
+    }
+
+    const mGo = app.concatenateTranslationMatrix(mZero, shiftX, shiftY);
 
     c.transform(mGo, true, false, false, false, false, Transformation.CENTER);
   }
