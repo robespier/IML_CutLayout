@@ -111,12 +111,12 @@
   },
   {
     "floatingEdge": 50,
-    "materialHeight": 444.5,
-    "nonWorkingArea": 16,
-    "trimOffset": 3,
+    "materialHeight": 1259.9999998705,
+    "nonWorkingArea": 45.354330704,
+    "trimOffset": 8.503937007,
     "widths": [
-      170,
-      400
+      481.88976372999997,
+      1133.8582675999999
     ]
   }
 ]

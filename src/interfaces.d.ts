@@ -24,12 +24,12 @@ interface ICommonOptions {
   floatingEdge?: number;
 
   /**
-   * Вал, мм.
+   * Вал, pt.
    */
   materialHeight?: number;
 
   /**
-   * Техническая область (обе рельсы), мм.
+   * Техническая область (обе рельсы), pt.
    */
   nonWorkingArea?: number;
 
@@ -49,12 +49,12 @@ interface ICommonOptions {
   },
 
   /**
-   * Поля на вылет, мм.
+   * Поля на вылет, pt.
    */
   trimOffset?: number;
 
   /**
-   * Выбранные порезы, мм.
+   * Выбранные порезы, pt.
    */
   widths?: number[];
 }

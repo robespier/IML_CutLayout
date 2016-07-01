@@ -60,6 +60,25 @@ const controller = (
       "material", "materials", "materialWidth", "printing",
     ]);
 
+    /**
+     * Normalize numeric options: convert `mm` to `pt`
+     */
+    const mmToPoint = 2.834645669;
+    const metrics = [
+      "materialHeight",
+      "nonWorkingArea",
+      "trimOffset",
+      "widths",
+    ];
+    metrics.forEach(key => {
+      const val = options[key];
+      if (val.length) {
+        options[key] = val.map( v => v * mmToPoint );
+      } else {
+        options[key] *= mmToPoint;
+      }
+    });
+
     return options;
   };
 
